@@ -24,8 +24,8 @@
 </head>
 <body>
 
-    @RenderBody()
-   
+
+
     <div id="screensaver">
         <canvas id="canvas"></canvas>
         <i class="fa fa-lock" id="screen_unlock"></i>
@@ -88,7 +88,7 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
                                         <div class="avatar">
-                                            <img src="~/root/img/avatar.jpg" class="img-rounded" alt="avatar"/>
+                                            <img src="~/root/img/avatar.jpg" class="img-rounded" alt="avatar" />
                                         </div>
                                         <i class="fa fa-angle-down pull-right"></i>
                                         <div class="user-mini pull-right">
@@ -104,19 +104,22 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="~/root/ajax/page_messages.html">~/root/ajax/page_messages.html>
+                                            <a href="~/root/ajax/page_messages.html">
+                                                ~/root/ajax/page_messages.html>
                                                 <i class="fa fa-envelope"></i>
                                                 <span class="hidden-sm text">Messages</span>
                                             </a>
                                         </li>
                                         <li>
-                                           <a href="~/root/ajax/gallery_simple.html">~/root/ajax/gallery_simple.html>
+                                            <a href="~/root/ajax/gallery_simple.html">
+                                                ~/root/ajax/gallery_simple.html>
                                                 <i class="fa fa-picture-o"></i>
                                                 <span class="hidden-sm text">Albums</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="~/root/ajax/calendar.html">~/root/ajax/calendar.html>
+                                            <a href="~/root/ajax/calendar.html">
+                                                ~/root/ajax/calendar.html>
                                                 <i class="fa fa-tasks"></i>
                                                 <span class="hidden-sm text">Tasks</span>
                                             </a>
@@ -142,7 +145,7 @@
             </div>
         </div>
     </header>
-   
+
     <div id="main" class="container-fluid">
         <div class="row">
             <div id="sidebar-left" class="col-xs-2 col-sm-2">
@@ -158,36 +161,40 @@
                             <i class="fa fa-bar-chart-o"></i>
                             <span class="hidden-xs">Inicio Sesion</span>
                         </a>
-                        
+
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-table"></i>
                             <span class="hidden-xs">Registro</span>
                         </a>
-                       
+
                     </li>
-                 
+
                 </ul>
             </div>
-          
+
             <div id="content" class="col-xs-12 col-sm-10">
                 <div class="preloader">
-                    <img src="~/root/img/devoops_getdata.gif" class="devoops-getdata" alt="preloader"/>
+                    <img src="~/root/img/devoops_getdata.gif" class="devoops-getdata" alt="preloader" />
                 </div>
                 <div id="ajax-content"></div>
             </div>
-       
+
         </div>
     </div>
-    
-    <!--<script src="http://code.jquery.com/jquery.js"></script>-->
-    <script src="~/root/plugins/jquery/jquery-2.1.0.min.js"></script>
-    <script src="~/root/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="~/root/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="~/root/plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>    
-    <script src="~/root/plugins/tinymce/tinymce.min.js"></script>    
-    <script src="~/root/plugins/tinymce/jquery.tinymce.min.js"></script>
-    <script src="~/root/js/devoops.js"></script>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+        <!--<script src="http://code.jquery.com/jquery.js"></script>-->
+        <script src="~/root/plugins/jquery/jquery-2.1.0.min.js"></script>
+        <script src="~/root/plugins/jquery-ui/jquery-ui.min.js"></script>
+        <script src="~/root/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="~/root/plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>
+        <script src="~/root/plugins/tinymce/tinymce.min.js"></script>
+        <script src="~/root/plugins/tinymce/jquery.tinymce.min.js"></script>
+        <script src="~/root/js/devoops.js"></script>
 </body>
 </html>

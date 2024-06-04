@@ -634,6 +634,7 @@
     <Content Include="Views\Shared\_LayoutExt.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\SingIn.cshtml" />
+    <Content Include="Views\Shared\_LayoutRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
