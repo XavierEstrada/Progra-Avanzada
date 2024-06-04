@@ -26,5 +26,19 @@ namespace proyectoPA.Controllers
 
             return View();
         }
+
+        public ActionResult LogIn()
+        {
+            ViewBag.Message = "Your LogIn page.";
+
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            ViewBag.Message = "Your register page.";
+
+            return View();
+        }
     }
 }
