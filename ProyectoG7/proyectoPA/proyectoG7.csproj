@@ -192,6 +192,7 @@
     <Content Include="root\img\devoops_pattern_b10.png" />
     <Content Include="root\img\logo-200.png" />
     <Content Include="root\img\logo.png" />
+    <Content Include="root\img\Movies.jpg" />
     <Content Include="root\img\sort-asc.png" />
     <Content Include="root\img\sort-desc.png" />
     <Content Include="root\img\sort.png" />
@@ -634,7 +635,6 @@
     <Content Include="Views\Shared\_LayoutExt.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
-    <Content Include="Views\Shared\_LayoutRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
