@@ -6,7 +6,7 @@
     <meta name="description" content="description">
     <meta name="author" content="DevOOPS">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
+
     <link href="~/root/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="~/root/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -16,7 +16,7 @@
     <link href="~/root/plugins/xcharts/xcharts.min.css" rel="stylesheet" />
     <link href="~/root/plugins/select2/select2.css" rel="stylesheet" />
     <link href="~/root/css/style.css" rel="stylesheet" />
-    
+
 
     <script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
     <script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
@@ -48,7 +48,7 @@
             </div>
         </div>
     </div>
-    
+
     <header class="navbar">
         <div class="container-fluid expanded-panel">
             <div class="row">
@@ -68,24 +68,6 @@
                         </div>
                         <div class="col-xs-4 col-sm-8 top-panel-right">
                             <ul class="nav navbar-nav pull-right panel-menu">
-                                <li class="hidden-xs">
-                                    <a href="index.html" class="modal-link">
-                                        <i class="fa fa-bell"></i>
-                                        <span class="badge">7</span>
-                                    </a>
-                                </li>
-                                <li class="hidden-xs">
-                                    <a class="ajax-link" href="ajax/calendar.html">
-                                        <i class="fa fa-calendar"></i>
-                                        <span class="badge">7</span>
-                                    </a>
-                                </li>
-                                <li class="hidden-xs">
-                                    <a href="ajax/page_messages.html" class="ajax-link">
-                                        <i class="fa fa-envelope"></i>
-                                        <span class="badge">7</span>
-                                    </a>
-                                </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
                                         <div class="avatar">
@@ -102,39 +84,6 @@
                                             <a href="#">
                                                 <i class="fa fa-user"></i>
                                                 <span class="hidden-sm text">Profile</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="~/root/ajax/page_messages.html">
-                                                ~/root/ajax/page_messages.html>
-                                                <i class="fa fa-envelope"></i>
-                                                <span class="hidden-sm text">Messages</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="~/root/ajax/gallery_simple.html">
-                                                ~/root/ajax/gallery_simple.html>
-                                                <i class="fa fa-picture-o"></i>
-                                                <span class="hidden-sm text">Albums</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="~/root/ajax/calendar.html">
-                                                ~/root/ajax/calendar.html>
-                                                <i class="fa fa-tasks"></i>
-                                                <span class="hidden-sm text">Tasks</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-cog"></i>
-                                                <span class="hidden-sm text">Settings</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-power-off"></i>
-                                                <span class="hidden-sm text">Logout</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -161,14 +110,14 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle">
                             <i class="fa fa-bar-chart-o"></i>
-                            <span class="hidden-xs">Log In</span>
+                            <span class="hidden-xs">Iniciar Sesion</span>
                         </a>
 
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">
+                        <a href="@Url.Action("Registro","Home")" class="dropdown-toggle">
                             <i class="fa fa-table"></i>
-                            <span class="hidden-xs">Register</span>
+                            <span class="hidden-xs">Registro</span>
                         </a>
 
                     </li>
@@ -180,7 +129,7 @@
                 <container>
                     @RenderBody();
                 </container>
-                
+
                 <div id="ajax-content"></div>
             </div>
 

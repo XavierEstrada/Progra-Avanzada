@@ -179,6 +179,7 @@
     <Content Include="root\ajax\ui_icons.html" />
     <Content Include="root\ajax\ui_jquery-ui.html" />
     <Content Include="root\ajax\ui_progressbars.html" />
+    <Content Include="root\css\Registro.css" />
     <Content Include="root\css\style.css" />
     <Content Include="root\css\style.min.css" />
     <Content Include="root\img\8962691008_7f489395c9_m.jpg" />
@@ -629,12 +630,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutExt.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
+    <Content Include="Views\Home\Registro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

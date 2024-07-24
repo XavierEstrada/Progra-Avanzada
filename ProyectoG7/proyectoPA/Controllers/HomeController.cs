@@ -13,31 +13,8 @@ namespace proyectoPA.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Registro()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult LogIn()
-        {
-            ViewBag.Message = "Your LogIn page.";
-
-            return View();
-        }
-
-        public ActionResult Register()
-        {
-            ViewBag.Message = "Your register page.";
-
             return View();
         }
     }
