@@ -17,5 +17,10 @@ namespace proyectoPA.Controllers
         {
             return View();
         }
+
+        public ActionResult InicioSesion()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutExt.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+<form class="form">
+    <p class="title">Inicio de Sesión</p>
+    <label>
+        <input class="input" type="email" placeholder="" required="">
+        <span>Correo Electrónico</span>
+    </label>
+
+    <label>
+        <input class="input" type="password" placeholder="" required="">
+        <span>Contraseña</span>
+    </label>
+    <button class="submit">Iniciar Sesión</button>
+    <p class="signin">¿Necesitas una cuenta? <a href="@Url.Action("Registro","Home")">Registro</a> </p>
+</form>

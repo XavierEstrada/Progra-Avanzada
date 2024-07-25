@@ -135,3 +135,29 @@
         opacity: 0;
     }
 }
+
+body {
+    background-image: url('https://w0.peakpx.com/wallpaper/663/269/HD-wallpaper-movie-poster-poster-collage-movie-cg.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    color: #333;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    background-color: rgba(v);
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #4da8da;
+    box-shadow: 0 4px 8px rgba(77, 168, 218);
+    max-width: 400px;
+    width: 100%;
+}
+
+.box-content {
+    margin-top: 20px;
+}

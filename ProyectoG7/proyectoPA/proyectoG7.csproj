@@ -632,7 +632,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutExt.cshtml" />
-    <Content Include="Views\Home\LogIn.cshtml" />
+    <Content Include="Views\Home\InicioSesion.cshtml" />
     <Content Include="Views\Home\Registro.cshtml" />
   </ItemGroup>
   <ItemGroup>
