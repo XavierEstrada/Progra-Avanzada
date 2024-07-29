@@ -253,8 +253,6 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-<<<<<<< Updated upstream
-=======
     <Content Include="root\plugins\bootstrap\bootstrap-theme.css.map" />
     <Content Include="root\plugins\bootstrap\bootstrap.css.map" />
     <Content Include="root\plugins\select2\bower.json" />
@@ -281,7 +279,6 @@
     <Content Include="BaseDatos\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
->>>>>>> Stashed changes
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -308,12 +305,9 @@
     <Content Include="Views\Shared\_LayoutExt.cshtml" />
     <Content Include="Views\Home\InicioSesion.cshtml" />
     <Content Include="Views\Home\Registro.cshtml" />
-<<<<<<< Updated upstream
     <Content Include="Views\Home\Pelicula.cshtml" />
-=======
     <Content Include="Views\Pelicula\RegistroPelicula.cshtml" />
     <Content Include="Views\Pelicula\ConsultaPelicula.cshtml" />
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

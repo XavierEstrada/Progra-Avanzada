@@ -5,8 +5,6 @@ VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "proyectoG7", "proyectoPA\proyectoG7.csproj", "{54B3C355-956F-475B-9484-4D071FF35BCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KN_Web", "..\..\Martes\KN_Web\KN_Web\KN_Web.csproj", "{DDCDC627-9FD5-4372-B82C-B256B33D7299}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{54B3C355-956F-475B-9484-4D071FF35BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54B3C355-956F-475B-9484-4D071FF35BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54B3C355-956F-475B-9484-4D071FF35BCB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DDCDC627-9FD5-4372-B82C-B256B33D7299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DDCDC627-9FD5-4372-B82C-B256B33D7299}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DDCDC627-9FD5-4372-B82C-B256B33D7299}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DDCDC627-9FD5-4372-B82C-B256B33D7299}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
