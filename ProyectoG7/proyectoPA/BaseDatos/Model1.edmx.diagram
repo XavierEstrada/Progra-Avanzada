@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3a9e7747760341afaf7f095639de9b16" Name="Diagram1">
+        <EntityTypeShape EntityType="CINE_DBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tCompra" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tErrorLog" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tFuncion" Width="1.5" PointX="3.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tGenero" Width="1.5" PointX="1.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tPelicula" Width="1.5" PointX="1.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tReserva" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tRoles" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tSala" Width="1.5" PointX="1.5" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tUsuario" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="CINE_DBModel.FK__Compra__id_reser__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="CINE_DBModel.FK__Compra__id_usuar__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="CINE_DBModel.FK__Funcion__id_peli__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="CINE_DBModel.FK__Funcion__id_sala__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="CINE_DBModel.FK__Reserva__id_func__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="CINE_DBModel.FK__Reserva__id_usua__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="CINE_DBModel.tPelicula_Genero" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

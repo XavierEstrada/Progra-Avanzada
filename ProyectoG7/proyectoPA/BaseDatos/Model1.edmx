@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CINE_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tCompra">
+          <Key>
+            <PropertyRef Name="id_compra" />
+          </Key>
+          <Property Name="id_compra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_reserva" Type="int" Nullable="false" />
+          <Property Name="fecha_compra" Type="datetime" Nullable="false" />
+          <Property Name="metodo_pago" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="total" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorID" />
+          </Key>
+          <Property Name="ErrorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrorMessage" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="ErrorDateTime" Type="datetime" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="tFuncion">
+          <Key>
+            <PropertyRef Name="id_funcion" />
+          </Key>
+          <Property Name="id_funcion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pelicula" Type="int" Nullable="false" />
+          <Property Name="id_sala" Type="int" Nullable="false" />
+          <Property Name="fecha_hora" Type="datetime" Nullable="false" />
+          <Property Name="precio" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tGenero">
+          <Key>
+            <PropertyRef Name="id_genero" />
+          </Key>
+          <Property Name="id_genero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tPelicula">
+          <Key>
+            <PropertyRef Name="id_pelicula" />
+          </Key>
+          <Property Name="id_pelicula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="duracion" Type="int" Nullable="false" />
+          <Property Name="director" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="sinopsis" Type="text" />
+          <Property Name="fecha_estreno" Type="date" Nullable="false" />
+          <Property Name="clasificacion" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="poster_url" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tPelicula_Genero">
+          <Key>
+            <PropertyRef Name="id_pelicula" />
+            <PropertyRef Name="id_genero" />
+          </Key>
+          <Property Name="id_pelicula" Type="int" Nullable="false" />
+          <Property Name="id_genero" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tReserva">
+          <Key>
+            <PropertyRef Name="id_reserva" />
+          </Key>
+          <Property Name="id_reserva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_funcion" Type="int" Nullable="false" />
+          <Property Name="cantidad_entradas" Type="int" Nullable="false" />
+          <Property Name="fecha_reserva" Type="datetime" Nullable="false" />
+          <Property Name="total_pagado" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tRoles">
+          <Key>
+            <PropertyRef Name="RolID" />
+          </Key>
+          <Property Name="RolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolNombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tSala">
+          <Key>
+            <PropertyRef Name="id_sala" />
+          </Key>
+          <Property Name="id_sala" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="capacidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tUsuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="correo_electronico" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="contrasenna" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Compra__id_reser__48CFD27E">
+          <End Role="tReserva" Type="Self.tReserva" Multiplicity="1" />
+          <End Role="tCompra" Type="Self.tCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tReserva">
+              <PropertyRef Name="id_reserva" />
+            </Principal>
+            <Dependent Role="tCompra">
+              <PropertyRef Name="id_reserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Compra__id_usuar__47DBAE45">
+          <End Role="tUsuario" Type="Self.tUsuario" Multiplicity="1" />
+          <End Role="tCompra" Type="Self.tCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUsuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="tCompra">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Funcion__id_peli__3E52440B">
+          <End Role="tPelicula" Type="Self.tPelicula" Multiplicity="1" />
+          <End Role="tFuncion" Type="Self.tFuncion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tPelicula">
+              <PropertyRef Name="id_pelicula" />
+            </Principal>
+            <Dependent Role="tFuncion">
+              <PropertyRef Name="id_pelicula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Funcion__id_sala__3F466844">
+          <End Role="tSala" Type="Self.tSala" Multiplicity="1" />
+          <End Role="tFuncion" Type="Self.tFuncion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tSala">
+              <PropertyRef Name="id_sala" />
+            </Principal>
+            <Dependent Role="tFuncion">
+              <PropertyRef Name="id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pelicula___id_ge__4E88ABD4">
+          <End Role="tGenero" Type="Self.tGenero" Multiplicity="1" />
+          <End Role="tPelicula_Genero" Type="Self.tPelicula_Genero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tGenero">
+              <PropertyRef Name="id_genero" />
+            </Principal>
+            <Dependent Role="tPelicula_Genero">
+              <PropertyRef Name="id_genero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pelicula___id_pe__4D94879B">
+          <End Role="tPelicula" Type="Self.tPelicula" Multiplicity="1" />
+          <End Role="tPelicula_Genero" Type="Self.tPelicula_Genero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tPelicula">
+              <PropertyRef Name="id_pelicula" />
+            </Principal>
+            <Dependent Role="tPelicula_Genero">
+              <PropertyRef Name="id_pelicula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_func__440B1D61">
+          <End Role="tFuncion" Type="Self.tFuncion" Multiplicity="1" />
+          <End Role="tReserva" Type="Self.tReserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tFuncion">
+              <PropertyRef Name="id_funcion" />
+            </Principal>
+            <Dependent Role="tReserva">
+              <PropertyRef Name="id_funcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_usua__4316F928">
+          <End Role="tUsuario" Type="Self.tUsuario" Multiplicity="1" />
+          <End Role="tReserva" Type="Self.tReserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUsuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="tReserva">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CINE_DBModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tCompra" EntityType="Self.tCompra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tErrorLog" EntityType="Self.tErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tFuncion" EntityType="Self.tFuncion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tGenero" EntityType="Self.tGenero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tPelicula" EntityType="Self.tPelicula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tPelicula_Genero" EntityType="Self.tPelicula_Genero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tReserva" EntityType="Self.tReserva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRoles" EntityType="Self.tRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tSala" EntityType="Self.tSala" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tUsuario" EntityType="Self.tUsuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Compra__id_reser__48CFD27E" Association="Self.FK__Compra__id_reser__48CFD27E">
+            <End Role="tReserva" EntitySet="tReserva" />
+            <End Role="tCompra" EntitySet="tCompra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Compra__id_usuar__47DBAE45" Association="Self.FK__Compra__id_usuar__47DBAE45">
+            <End Role="tUsuario" EntitySet="tUsuario" />
+            <End Role="tCompra" EntitySet="tCompra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Funcion__id_peli__3E52440B" Association="Self.FK__Funcion__id_peli__3E52440B">
+            <End Role="tPelicula" EntitySet="tPelicula" />
+            <End Role="tFuncion" EntitySet="tFuncion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Funcion__id_sala__3F466844" Association="Self.FK__Funcion__id_sala__3F466844">
+            <End Role="tSala" EntitySet="tSala" />
+            <End Role="tFuncion" EntitySet="tFuncion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pelicula___id_ge__4E88ABD4" Association="Self.FK__Pelicula___id_ge__4E88ABD4">
+            <End Role="tGenero" EntitySet="tGenero" />
+            <End Role="tPelicula_Genero" EntitySet="tPelicula_Genero" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pelicula___id_pe__4D94879B" Association="Self.FK__Pelicula___id_pe__4D94879B">
+            <End Role="tPelicula" EntitySet="tPelicula" />
+            <End Role="tPelicula_Genero" EntitySet="tPelicula_Genero" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_func__440B1D61" Association="Self.FK__Reserva__id_func__440B1D61">
+            <End Role="tFuncion" EntitySet="tFuncion" />
+            <End Role="tReserva" EntitySet="tReserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_usua__4316F928" Association="Self.FK__Reserva__id_usua__4316F928">
+            <End Role="tUsuario" EntitySet="tUsuario" />
+            <End Role="tReserva" EntitySet="tReserva" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CINE_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tCompra">
+          <Key>
+            <PropertyRef Name="id_compra" />
+          </Key>
+          <Property Name="id_compra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_reserva" Type="Int32" Nullable="false" />
+          <Property Name="fecha_compra" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="metodo_pago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="total" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="tReserva" Relationship="Self.FK__Compra__id_reser__48CFD27E" FromRole="tCompra" ToRole="tReserva" />
+          <NavigationProperty Name="tUsuario" Relationship="Self.FK__Compra__id_usuar__47DBAE45" FromRole="tCompra" ToRole="tUsuario" />
+        </EntityType>
+        <EntityType Name="tErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorID" />
+          </Key>
+          <Property Name="ErrorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ErrorDateTime" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tFuncion">
+          <Key>
+            <PropertyRef Name="id_funcion" />
+          </Key>
+          <Property Name="id_funcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pelicula" Type="Int32" Nullable="false" />
+          <Property Name="id_sala" Type="Int32" Nullable="false" />
+          <Property Name="fecha_hora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="tPelicula" Relationship="Self.FK__Funcion__id_peli__3E52440B" FromRole="tFuncion" ToRole="tPelicula" />
+          <NavigationProperty Name="tSala" Relationship="Self.FK__Funcion__id_sala__3F466844" FromRole="tFuncion" ToRole="tSala" />
+          <NavigationProperty Name="tReserva" Relationship="Self.FK__Reserva__id_func__440B1D61" FromRole="tFuncion" ToRole="tReserva" />
+        </EntityType>
+        <EntityType Name="tGenero">
+          <Key>
+            <PropertyRef Name="id_genero" />
+          </Key>
+          <Property Name="id_genero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tPelicula" Relationship="Self.tPelicula_Genero" FromRole="tGenero" ToRole="tPelicula" />
+        </EntityType>
+        <EntityType Name="tPelicula">
+          <Key>
+            <PropertyRef Name="id_pelicula" />
+          </Key>
+          <Property Name="id_pelicula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="duracion" Type="Int32" Nullable="false" />
+          <Property Name="director" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sinopsis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_estreno" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="clasificacion" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="poster_url" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tFuncion" Relationship="Self.FK__Funcion__id_peli__3E52440B" FromRole="tPelicula" ToRole="tFuncion" />
+          <NavigationProperty Name="tGenero" Relationship="Self.tPelicula_Genero" FromRole="tPelicula" ToRole="tGenero" />
+        </EntityType>
+        <EntityType Name="tReserva">
+          <Key>
+            <PropertyRef Name="id_reserva" />
+          </Key>
+          <Property Name="id_reserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_funcion" Type="Int32" Nullable="false" />
+          <Property Name="cantidad_entradas" Type="Int32" Nullable="false" />
+          <Property Name="fecha_reserva" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="total_pagado" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="tCompra" Relationship="Self.FK__Compra__id_reser__48CFD27E" FromRole="tReserva" ToRole="tCompra" />
+          <NavigationProperty Name="tFuncion" Relationship="Self.FK__Reserva__id_func__440B1D61" FromRole="tReserva" ToRole="tFuncion" />
+          <NavigationProperty Name="tUsuario" Relationship="Self.FK__Reserva__id_usua__4316F928" FromRole="tReserva" ToRole="tUsuario" />
+        </EntityType>
+        <EntityType Name="tRoles">
+          <Key>
+            <PropertyRef Name="RolID" />
+          </Key>
+          <Property Name="RolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tSala">
+          <Key>
+            <PropertyRef Name="id_sala" />
+          </Key>
+          <Property Name="id_sala" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="capacidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tFuncion" Relationship="Self.FK__Funcion__id_sala__3F466844" FromRole="tSala" ToRole="tFuncion" />
+        </EntityType>
+        <EntityType Name="tUsuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="correo_electronico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contrasenna" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tCompra" Relationship="Self.FK__Compra__id_usuar__47DBAE45" FromRole="tUsuario" ToRole="tCompra" />
+          <NavigationProperty Name="tReserva" Relationship="Self.FK__Reserva__id_usua__4316F928" FromRole="tUsuario" ToRole="tReserva" />
+        </EntityType>
+        <Association Name="FK__Compra__id_reser__48CFD27E">
+          <End Role="tReserva" Type="Self.tReserva" Multiplicity="1" />
+          <End Role="tCompra" Type="Self.tCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tReserva">
+              <PropertyRef Name="id_reserva" />
+            </Principal>
+            <Dependent Role="tCompra">
+              <PropertyRef Name="id_reserva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Compra__id_usuar__47DBAE45">
+          <End Role="tUsuario" Type="Self.tUsuario" Multiplicity="1" />
+          <End Role="tCompra" Type="Self.tCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUsuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="tCompra">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Funcion__id_peli__3E52440B">
+          <End Role="tPelicula" Type="Self.tPelicula" Multiplicity="1" />
+          <End Role="tFuncion" Type="Self.tFuncion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tPelicula">
+              <PropertyRef Name="id_pelicula" />
+            </Principal>
+            <Dependent Role="tFuncion">
+              <PropertyRef Name="id_pelicula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Funcion__id_sala__3F466844">
+          <End Role="tSala" Type="Self.tSala" Multiplicity="1" />
+          <End Role="tFuncion" Type="Self.tFuncion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tSala">
+              <PropertyRef Name="id_sala" />
+            </Principal>
+            <Dependent Role="tFuncion">
+              <PropertyRef Name="id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_func__440B1D61">
+          <End Role="tFuncion" Type="Self.tFuncion" Multiplicity="1" />
+          <End Role="tReserva" Type="Self.tReserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tFuncion">
+              <PropertyRef Name="id_funcion" />
+            </Principal>
+            <Dependent Role="tReserva">
+              <PropertyRef Name="id_funcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reserva__id_usua__4316F928">
+          <End Role="tUsuario" Type="Self.tUsuario" Multiplicity="1" />
+          <End Role="tReserva" Type="Self.tReserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUsuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="tReserva">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tPelicula_Genero">
+          <End Role="tGenero" Type="Self.tGenero" Multiplicity="*" />
+          <End Role="tPelicula" Type="Self.tPelicula" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="CINE_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tCompra" EntityType="Self.tCompra" />
+          <EntitySet Name="tErrorLog" EntityType="Self.tErrorLog" />
+          <EntitySet Name="tFuncion" EntityType="Self.tFuncion" />
+          <EntitySet Name="tGenero" EntityType="Self.tGenero" />
+          <EntitySet Name="tPelicula" EntityType="Self.tPelicula" />
+          <EntitySet Name="tReserva" EntityType="Self.tReserva" />
+          <EntitySet Name="tRoles" EntityType="Self.tRoles" />
+          <EntitySet Name="tSala" EntityType="Self.tSala" />
+          <EntitySet Name="tUsuario" EntityType="Self.tUsuario" />
+          <AssociationSet Name="FK__Compra__id_reser__48CFD27E" Association="Self.FK__Compra__id_reser__48CFD27E">
+            <End Role="tReserva" EntitySet="tReserva" />
+            <End Role="tCompra" EntitySet="tCompra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Compra__id_usuar__47DBAE45" Association="Self.FK__Compra__id_usuar__47DBAE45">
+            <End Role="tUsuario" EntitySet="tUsuario" />
+            <End Role="tCompra" EntitySet="tCompra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Funcion__id_peli__3E52440B" Association="Self.FK__Funcion__id_peli__3E52440B">
+            <End Role="tPelicula" EntitySet="tPelicula" />
+            <End Role="tFuncion" EntitySet="tFuncion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Funcion__id_sala__3F466844" Association="Self.FK__Funcion__id_sala__3F466844">
+            <End Role="tSala" EntitySet="tSala" />
+            <End Role="tFuncion" EntitySet="tFuncion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_func__440B1D61" Association="Self.FK__Reserva__id_func__440B1D61">
+            <End Role="tFuncion" EntitySet="tFuncion" />
+            <End Role="tReserva" EntitySet="tReserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reserva__id_usua__4316F928" Association="Self.FK__Reserva__id_usua__4316F928">
+            <End Role="tUsuario" EntitySet="tUsuario" />
+            <End Role="tReserva" EntitySet="tReserva" />
+          </AssociationSet>
+          <AssociationSet Name="tPelicula_Genero" Association="Self.tPelicula_Genero">
+            <End Role="tGenero" EntitySet="tGenero" />
+            <End Role="tPelicula" EntitySet="tPelicula" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CINE_DBModelStoreContainer" CdmEntityContainer="CINE_DBEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CINE_DBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tCompra">
+            <EntityTypeMapping TypeName="CINE_DBModel.tCompra">
+              <MappingFragment StoreEntitySet="tCompra">
+                <ScalarProperty Name="id_compra" ColumnName="id_compra" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_reserva" ColumnName="id_reserva" />
+                <ScalarProperty Name="fecha_compra" ColumnName="fecha_compra" />
+                <ScalarProperty Name="metodo_pago" ColumnName="metodo_pago" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tErrorLog">
+            <EntityTypeMapping TypeName="CINE_DBModel.tErrorLog">
+              <MappingFragment StoreEntitySet="tErrorLog">
+                <ScalarProperty Name="ErrorID" ColumnName="ErrorID" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="ErrorDateTime" ColumnName="ErrorDateTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tFuncion">
+            <EntityTypeMapping TypeName="CINE_DBModel.tFuncion">
+              <MappingFragment StoreEntitySet="tFuncion">
+                <ScalarProperty Name="id_funcion" ColumnName="id_funcion" />
+                <ScalarProperty Name="id_pelicula" ColumnName="id_pelicula" />
+                <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+                <ScalarProperty Name="fecha_hora" ColumnName="fecha_hora" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tGenero">
+            <EntityTypeMapping TypeName="CINE_DBModel.tGenero">
+              <MappingFragment StoreEntitySet="tGenero">
+                <ScalarProperty Name="id_genero" ColumnName="id_genero" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tPelicula">
+            <EntityTypeMapping TypeName="CINE_DBModel.tPelicula">
+              <MappingFragment StoreEntitySet="tPelicula">
+                <ScalarProperty Name="id_pelicula" ColumnName="id_pelicula" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="duracion" ColumnName="duracion" />
+                <ScalarProperty Name="director" ColumnName="director" />
+                <ScalarProperty Name="sinopsis" ColumnName="sinopsis" />
+                <ScalarProperty Name="fecha_estreno" ColumnName="fecha_estreno" />
+                <ScalarProperty Name="clasificacion" ColumnName="clasificacion" />
+                <ScalarProperty Name="poster_url" ColumnName="poster_url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tReserva">
+            <EntityTypeMapping TypeName="CINE_DBModel.tReserva">
+              <MappingFragment StoreEntitySet="tReserva">
+                <ScalarProperty Name="id_reserva" ColumnName="id_reserva" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_funcion" ColumnName="id_funcion" />
+                <ScalarProperty Name="cantidad_entradas" ColumnName="cantidad_entradas" />
+                <ScalarProperty Name="fecha_reserva" ColumnName="fecha_reserva" />
+                <ScalarProperty Name="total_pagado" ColumnName="total_pagado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRoles">
+            <EntityTypeMapping TypeName="CINE_DBModel.tRoles">
+              <MappingFragment StoreEntitySet="tRoles">
+                <ScalarProperty Name="RolID" ColumnName="RolID" />
+                <ScalarProperty Name="RolNombre" ColumnName="RolNombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tSala">
+            <EntityTypeMapping TypeName="CINE_DBModel.tSala">
+              <MappingFragment StoreEntitySet="tSala">
+                <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tUsuario">
+            <EntityTypeMapping TypeName="CINE_DBModel.tUsuario">
+              <MappingFragment StoreEntitySet="tUsuario">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
+                <ScalarProperty Name="contrasenna" ColumnName="contrasenna" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="tPelicula_Genero" TypeName="CINE_DBModel.tPelicula_Genero" StoreEntitySet="tPelicula_Genero">
+            <EndProperty Name="tGenero">
+              <ScalarProperty Name="id_genero" ColumnName="id_genero" />
+            </EndProperty>
+            <EndProperty Name="tPelicula">
+              <ScalarProperty Name="id_pelicula" ColumnName="id_pelicula" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

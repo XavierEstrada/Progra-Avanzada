@@ -1,0 +1,44 @@
+﻿@model  List<proyectoPA.BaseDatos.tPelicula>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "ConsultaPelicula";
+}
+
+<br>
+<h4>Lista de Peliculas</h4>
+<hr>
+<br>
+
+<table id="tablaPeliculas" class="table table-dark">
+    <thead>
+        <tr>
+            <th>Título Película</th>
+            <th>Duración</th>
+            <th>Director</th>
+            <th>Clasificación</th>
+            <th>Eliminar</th>
+            <th>Actualizar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.titulo</td>
+                <td>@item.duracion</td>
+                <td>@item.director</td>
+                <td>@item.clasificacion</td>
+                <td>
+                    <button class="btn btn-danger">Eliminar</button>
+                </td>
+                <td>
+                    <button class="btn btn-primary">Actualizar</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
