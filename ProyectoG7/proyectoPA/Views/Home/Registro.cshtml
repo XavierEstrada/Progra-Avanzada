@@ -3,28 +3,41 @@
     ViewBag.Title = "Registro";
     Layout = "~/Views/Shared/_LayoutExt.cshtml";
 }
+<body>
+    <div id="main">
+        <div class="box">
+            <div class="border-left"></div>
+            <div class="border-right"></div>
+            <div class="inner">
+                <form class="form">
+                    <p class="title">Registro</p>
+                    <label>
+                        <input class="input" type="text" placeholder="" required="">
+                        <span>Nombre Completo</span>
+                    </label>
 
-<form class="form">
-    <p class="title">Registro</p>
-    <label>
-        <input class="input" type="text" placeholder="" required="">
-        <span>Nombre Completo</span>
-    </label>
+                    <label>
+                        <input class="input" type="text" placeholder="" required="">
+                        <span>Identificación</span>
+                    </label>
 
-    <label>
-        <input class="input" type="text" placeholder="" required="">
-        <span>Identificación</span>
-    </label>
+                    <label>
+                        <input class="input" type="email" placeholder="" required="">
+                        <span>Correo Electrónico</span>
+                    </label>
 
-    <label>
-        <input class="input" type="email" placeholder="" required="">
-        <span>Correo Electrónico</span>
-    </label>
+                    <label>
+                        <input class="input" type="password" placeholder="" required="">
+                        <span>Contraseña</span>
+                    </label>
+                    <button class="submit">Registrar</button>
+                    <p class="signin">¿Ya tienes una cuenta? <a href="@Url.Action("InicioSesion","Home")">Iniciar Sesión</a> </p>
+                </form>
+            </div>
+        </div>
+    </div>
 
-    <label>
-        <input class="input" type="password" placeholder="" required="">
-        <span>Contraseña</span>
-    </label>
-    <button class="submit">Registrar</button>
-    <p class="signin">¿Ya tienes una cuenta? <a href="@Url.Action("InicioSesion","Home")">Iniciar Sesión</a> </p>
-</form>
+
+    <div class="corner-image">
+        <img src="@Url.Content("~/root/img/banner-img.png")" alt="Decoración" />
+    </div>

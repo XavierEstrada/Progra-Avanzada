@@ -22,7 +22,11 @@ namespace proyectoPA.Controllers
         {
             return View();
         }
+       
+            public ActionResult QuienesSomos()
+            {
+                return View();
+            }
 
-
-    }
+        }
 }

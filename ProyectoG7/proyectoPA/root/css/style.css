@@ -12,6 +12,7 @@ body {
 	line-height:1em;
 	color:#858585;
 }
+
 object {
 	vertical-align:top;
 	outline:none;
@@ -121,13 +122,15 @@ ul, ol {
 	float:right;
 }
 .movies {
-	width:100%;
+	width: 100%;
+	max-width: 100%;
 }
-.movies li {
-	float:left;
-	width:286px;
-	margin-right:15px;
-}
+	.movies li {
+		float: left;
+		width: 286px;
+		margin-right: 15px;
+		width: calc(33.333% - 1rem);
+	}
 .movies li.last {
 	margin-right:0;
 }
@@ -141,6 +144,7 @@ ul, ol {
 .movies li img {
 	margin-left:-30px;
 	position:relative;
+
 }
 .movies li p {
 	margin:5px 0 15px 0;
@@ -483,3 +487,80 @@ h4 {
 a {
 	outline:none;
 }
+
+.corner-image {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	z-index: 1000; 
+}
+
+	.corner-image img {
+		width: 350px; 
+		height: auto;
+	}
+
+.signin {
+	text-align: center;
+	margin-top: 15px;
+}
+
+.signin a {
+		color: #2c6d9a;
+		text-decoration: none;
+}
+
+.signin a:hover {
+			text-decoration: underline;
+}
+.submit {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	background: #2c6d9a;
+	color: #ffffff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s ease;
+	margin-top: 20px;
+}
+
+	.submit:hover {
+		background: #1d3a5f;
+	}
+
+input.input:focus + span,
+input.input:not(:placeholder-shown) + span {
+	top: -10px;
+	left: 5px;
+	font-size: 12px;
+	color: #2c6d9a;
+}
+
+input.input {
+	width: 100%;
+	padding: 10px;
+	background: #f9f9f9;
+	border: 1px solid #ddd;
+	color: #333;
+	border-radius: 4px;
+	box-sizing: border-box;
+	font-size: 16px;
+}
+	input.input:focus {
+		outline: none;
+		border-color: #2c6d9a;
+	}
+
+.box .inner {
+	padding: 28px 50px 25px 50px;
+	max-width: 500px;
+	margin: 50px auto 0 auto; /* Ajusta el margen superior según sea necesario */
+	background: rgba(255, 255, 255, 0.8);
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+

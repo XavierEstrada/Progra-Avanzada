@@ -229,6 +229,7 @@
     <Content Include="root\img\icon2.gif" />
     <Content Include="root\img\icon3-act.gif" />
     <Content Include="root\img\icon3.gif" />
+    <Content Include="root\img\increibles.jpg" />
     <Content Include="root\img\line-hor.gif" />
     <Content Include="root\img\link1-left.png" />
     <Content Include="root\img\link1-right.png" />
@@ -238,6 +239,8 @@
     <Content Include="root\img\link2-tail.gif" />
     <Content Include="root\img\nav-act.gif" />
     <Content Include="root\img\nav-bg.gif" />
+    <Content Include="root\img\nemo.jpg" />
+    <Content Include="root\img\nemo2.jpg" />
     <Content Include="root\img\spacer.gif" />
     <Content Include="root\img\tail-bottom.gif" />
     <Content Include="root\img\tail-top.gif" />
@@ -308,6 +311,8 @@
     <Content Include="Views\Home\Registro.cshtml" />
     <Content Include="Views\Pelicula\RegistroPelicula.cshtml" />
     <Content Include="Views\Pelicula\ConsultaPelicula.cshtml" />
+    <Content Include="Views\Pelicula\Cartelera.cshtml" />
+    <Content Include="Views\Home\QuienesSomos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

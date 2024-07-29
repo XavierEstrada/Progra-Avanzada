@@ -50,6 +50,11 @@ namespace proyectoPA.Controllers
             return View(respuesta);
         }
 
+        [HttpGet]
+        public ActionResult Cartelera()
+        {
+            return View();
+        }
 
 
 

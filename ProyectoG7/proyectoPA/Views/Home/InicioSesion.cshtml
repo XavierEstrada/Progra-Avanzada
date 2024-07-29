@@ -3,17 +3,32 @@
     ViewBag.Title = "Home Page";
 }
 
-<form class="form">
-    <p class="title">Inicio de Sesión</p>
-    <label>
-        <input class="input" type="email" placeholder="" required="">
-        <span>Correo Electrónico</span>
-    </label>
+<body>
+    <div id="main">
+        <div class="box">
+            <div class="border-left"></div>
+            <div class="border-right"></div>
+            <div class="inner">
+                <form class="form">
+                    <p class="title">Inicio de Sesión</p>
+                    <label>
+                        <input class="input" type="email" placeholder="Correo Electrónico" required>
+                        <span>Correo Electrónico</span>
+                    </label>
 
-    <label>
-        <input class="input" type="password" placeholder="" required="">
-        <span>Contraseña</span>
-    </label>
-    <button class="submit">Iniciar Sesión</button>
-    <p class="signin">¿Necesitas una cuenta? <a href="@Url.Action("Registro","Home")">Registro</a> </p>
-</form>
+                    <label>
+                        <input class="input" type="password" placeholder="Contraseña" required>
+                        <span>Contraseña</span>
+                    </label>
+                    <button class="submit">Iniciar Sesión</button>
+                    <p class="signin">¿Necesitas una cuenta? <a href="@Url.Action("Registro","Home")">Registro</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="corner-image">
+        <img src="@Url.Content("~/root/img/banner-img.png")" alt="Decoración" />
+    </div>
+</body>
