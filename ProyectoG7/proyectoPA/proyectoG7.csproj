@@ -247,6 +247,7 @@
     <Content Include="root\js\Gill_Sans_400.font.js" />
     <Content Include="root\js\jquery-1.4.2.min.js" />
     <Content Include="root\js\script.js" />
+    <Content Include="root\js\UrlPosterImg.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -305,7 +306,6 @@
     <Content Include="Views\Shared\_LayoutExt.cshtml" />
     <Content Include="Views\Home\InicioSesion.cshtml" />
     <Content Include="Views\Home\Registro.cshtml" />
-    <Content Include="Views\Home\Pelicula.cshtml" />
     <Content Include="Views\Pelicula\RegistroPelicula.cshtml" />
     <Content Include="Views\Pelicula\ConsultaPelicula.cshtml" />
   </ItemGroup>
