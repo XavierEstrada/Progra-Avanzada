@@ -5,98 +5,101 @@
     ViewBag.Title = "RegistroPelicula";
 }
 
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="mb-0">Registro de Película</h4>
-                </div>
-                <div class="card-body">
-                    @using (Html.BeginForm("RegistroPelicula", "Pelicula", FormMethod.Post, new { @class = "form" }))
-                    {
-                        <div class="form-group">
-                            @Html.Label("Titulo", htmlAttributes: new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Titulo, new
-                            {
-                                @class = "form-control",
-                                @placeholder = "Título"
-                            })
-                        </div>
+<body>
+    <div id="main">
+        <div class="box">
+            <div class="border-left"></div>
+            <div class="border-right"></div>
+            <div class="inner">
+                @using (Html.BeginForm("RegistroPelicula", "Pelicula", FormMethod.Post, new { @class = "form" }))
+                {
+                    <p class="title">Registro Pelicula</p>
+                    <div class="form-group">
+                        @Html.Label("Titulo", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Titulo, new
+                        {
+                            @class = "form-control",
+                            @placeholder = "Título"
+                        })
+                    </div>
 
-                        <div class="form-group">
-                            @Html.Label("Duracion", htmlAttributes: new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Duracion, new
-                            {
-                                @class = "form-control",
-                                @placeholder = "Duración"
-                            })
-                        </div>
+                    <div class="form-group">
+                        @Html.Label("Duracion", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Duracion, new
+                        {
+                            @class = "form-control",
+                            @placeholder = "Duración"
+                        })
+                    </div>
 
-                        <div class="form-group">
-                            @Html.Label("Director", htmlAttributes: new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Director, new
-                            {
-                                @class = "form-control",
-                                @placeholder = "Director"
-                            })
-                        </div>
+                    <div class="form-group">
+                        @Html.Label("Director", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Director, new
+                        {
+                            @class = "form-control",
+                            @placeholder = "Director"
+                        })
+                    </div>
 
-                        <div class="form-group">
-                            @Html.Label("Sinopsis", htmlAttributes: new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Sinopsis, new
-                            {
-                                @class = "form-control",
-                                @placeholder = "Sinopsis"
-                            })
-                        </div>
+                    <div class="form-group">
+                        @Html.Label("Sinopsis", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Sinopsis, new
+                        {
+                            @class = "form-control",
+                            @placeholder = "Sinopsis"
+                        })
+                    </div>
 
-                        <div class="form-group">
-                            @Html.Label("Fecha Estreno", htmlAttributes: new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Fecha_estreno, new
-                            {
-                                @type = "date",
-                                @class = "form-control",
-                                @placeholder = "Fecha de Estreno"
-                            })
-                        </div>
+                    <div class="form-group">
+                        @Html.Label("Fecha Estreno", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Fecha_estreno, new
+                        {
+                            @type = "date",
+                            @class = "form-control",
+                            @placeholder = "Fecha de Estreno"
+                        })
+                    </div>
 
-                        <div class="form-group">
-                            @Html.Label("Clasificación", htmlAttributes: new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Clasificacion, new
-                            {
-                                @class = "form-control",
-                                @placeholder = "Clasificación"
-                            })
-                        </div>
+                    <div class="form-group">
+                        @Html.Label("Clasificación", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Clasificacion, new
+                        {
+                            @class = "form-control",
+                            @placeholder = "Clasificación"
+                        })
+                    </div>
 
-                        <div class="form-group">
-                            @Html.Label("URL de la Imagen", htmlAttributes: new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Poster_Url, new
-                            {
-                                @type = "text",
-                                @class = "form-control",
-                                @placeholder = "Ingrese la URL de la imagen",
-                                @id = "PosterUrlInput"
-                            })
-                        </div>
+                    <div class="form-group">
+                        @Html.Label("URL de la Imagen", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Poster_Url, new
+                        {
+                            @type = "text",
+                            @class = "form-control",
+                            @placeholder = "Ingrese la URL de la imagen",
+                            @id = "PosterUrlInput"
+                        })
+                    </div>
 
-                        <div class="form-group">
-                            <div class="image-preview mt-3">
-                                <h5>Vista previa de la imagen:</h5>
-                                <img id="imagePreview" src="" alt="Imagen no disponible" class="img-fluid" />
-                            </div>
+                    <div class="form-group">
+                        <div class="image-preview mt-3">
+                            <h5>Vista previa de la imagen:</h5>
+                            <img id="imagePreview" src="" alt="Imagen no disponible" class="img-fluid" />
                         </div>
+                    </div>
 
-                        <div class="form-group text-center mt-4">
-                            <button type="submit" class="btn btn-primary">Registrar</button>
-                        </div>
-                    }
-                </div>
+                    <div class="form-group text-center mt-4">
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                    </div>
+                }
             </div>
         </div>
     </div>
-</div>
+    <div class="corner-image">
+        <img src="@Url.Content("~/root/img/banner-img.png")" alt="Decoración" />
+    </div>
+    </body>
 
-<script src="/scripts/UrlPosterImg.js" defer></script>
+
+
+    <script src="/scripts/UrlPosterImg.js" defer></script>
 

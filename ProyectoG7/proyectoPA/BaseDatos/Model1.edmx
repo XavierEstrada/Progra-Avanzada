@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CINE_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CINE_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -86,10 +86,10 @@
         </EntityType>
         <EntityType Name="tRoles">
           <Key>
-            <PropertyRef Name="RolID" />
+            <PropertyRef Name="idRol" />
           </Key>
-          <Property Name="RolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RolNombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="idRol" Type="tinyint" Nullable="false" />
+          <Property Name="rolNombre" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="tSala">
           <Key>
@@ -105,9 +105,10 @@
           </Key>
           <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="correo_electronico" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="identificacion" Type="nvarchar" MaxLength="30" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="contrasenna" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="idRol" Type="tinyint" />
         </EntityType>
         <Association Name="FK__Compra__id_reser__48CFD27E">
           <End Role="tReserva" Type="Self.tReserva" Multiplicity="1" />
@@ -250,8 +251,7 @@
             <End Role="tReserva" EntitySet="tReserva" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CINE_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -339,10 +339,11 @@
         </EntityType>
         <EntityType Name="tRoles">
           <Key>
-            <PropertyRef Name="RolID" />
+            <PropertyRef Name="idRol" />
           </Key>
-          <Property Name="RolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RolNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idRol" Type="Byte" Nullable="false" />
+          <Property Name="rolNombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tUsuario" Relationship="Self.FK_idRol" FromRole="tRoles" ToRole="tUsuario" />
         </EntityType>
         <EntityType Name="tSala">
           <Key>
@@ -359,11 +360,13 @@
           </Key>
           <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="correo_electronico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="contrasenna" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idRol" Type="Byte" />
           <NavigationProperty Name="tCompra" Relationship="Self.FK__Compra__id_usuar__47DBAE45" FromRole="tUsuario" ToRole="tCompra" />
           <NavigationProperty Name="tReserva" Relationship="Self.FK__Reserva__id_usua__4316F928" FromRole="tUsuario" ToRole="tReserva" />
+          <NavigationProperty Name="tRoles" Relationship="Self.FK_idRol" FromRole="tUsuario" ToRole="tRoles" />
+          <Property Name="identificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__Compra__id_reser__48CFD27E">
           <End Role="tReserva" Type="Self.tReserva" Multiplicity="1" />
@@ -437,6 +440,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_idRol">
+          <End Role="tRoles" Type="Self.tRoles" Multiplicity="0..1" />
+          <End Role="tUsuario" Type="Self.tUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRoles">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="tUsuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="tPelicula_Genero">
           <End Role="tGenero" Type="Self.tGenero" Multiplicity="*" />
           <End Role="tPelicula" Type="Self.tPelicula" Multiplicity="*" />
@@ -475,6 +490,10 @@
           <AssociationSet Name="FK__Reserva__id_usua__4316F928" Association="Self.FK__Reserva__id_usua__4316F928">
             <End Role="tUsuario" EntitySet="tUsuario" />
             <End Role="tReserva" EntitySet="tReserva" />
+          </AssociationSet>
+          <AssociationSet Name="FK_idRol" Association="Self.FK_idRol">
+            <End Role="tRoles" EntitySet="tRoles" />
+            <End Role="tUsuario" EntitySet="tUsuario" />
           </AssociationSet>
           <AssociationSet Name="tPelicula_Genero" Association="Self.tPelicula_Genero">
             <End Role="tGenero" EntitySet="tGenero" />
@@ -568,8 +587,8 @@
           <EntitySetMapping Name="tRoles">
             <EntityTypeMapping TypeName="CINE_DBModel.tRoles">
               <MappingFragment StoreEntitySet="tRoles">
-                <ScalarProperty Name="RolID" ColumnName="RolID" />
-                <ScalarProperty Name="RolNombre" ColumnName="RolNombre" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="rolNombre" ColumnName="rolNombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -585,11 +604,12 @@
           <EntitySetMapping Name="tUsuario">
             <EntityTypeMapping TypeName="CINE_DBModel.tUsuario">
               <MappingFragment StoreEntitySet="tUsuario">
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
                 <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="apellido" ColumnName="apellido" />
-                <ScalarProperty Name="correo_electronico" ColumnName="correo_electronico" />
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="contrasenna" ColumnName="contrasenna" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

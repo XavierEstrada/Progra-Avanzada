@@ -16,18 +16,18 @@ namespace proyectoPA.Models
 
             var rowsAffected = 0;
 
-            var tabla = new tPelicula();
-            tabla.titulo = movie.Titulo;
-            tabla.duracion = movie.Duracion;
-            tabla.director = movie.Director;
-            tabla.sinopsis = movie.Sinopsis;
-            tabla.fecha_estreno = movie.Fecha_estreno;
-            tabla.clasificacion = movie.Clasificacion;
-            tabla.poster_url = movie.Poster_Url;
+            var tablaP = new tPelicula();
+            tablaP.titulo = movie.Titulo;
+            tablaP.duracion = movie.Duracion;
+            tablaP.director = movie.Director;
+            tablaP.sinopsis = movie.Sinopsis;
+            tablaP.fecha_estreno = movie.Fecha_estreno;
+            tablaP.clasificacion = movie.Clasificacion;
+            tablaP.poster_url = movie.Poster_Url;
 
             using (var context = new CINE_DBEntities())
             {
-                context.tPelicula.Add(tabla);
+                context.tPelicula.Add(tablaP);
                 rowsAffected = context.SaveChanges();
             }
 

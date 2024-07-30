@@ -26,20 +26,35 @@ namespace proyectoPA.Controllers
         [HttpPost]
         public ActionResult RegistroPelicula(Pelicula movie)
         {
-            var respuesta = peliculaM.NuevaPelicula(movie);
-
-            if (respuesta)
+            if (ModelState.IsValid)
             {
-                ViewBag.msj = "Pelicula registrada";
-                return  RedirectToAction("RegistroPelicula", "Pelicula");
+                try
+                {
+                    var respuesta = peliculaM.NuevaPelicula(movie);
+                    if (respuesta)
+                    {
+                        ViewBag.Mensaje = "Pelicula registrada con éxito.";
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.Mensaje = "Pelicula no registrada. Por favor, revise la información proporcionada.";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Manejo de errores
+                    ViewBag.Mensaje = "Ocurrió un error al registrar la película: " + ex.Message;
+                }
             }
             else
             {
-                ViewBag.msj = "Pelicula no registrada, revisar informacion";
-                return View();
+                ViewBag.Mensaje = "Por favor, corrija los errores en el formulario.";
             }
-           
+
+            return View(movie);
         }
+
 
 
 

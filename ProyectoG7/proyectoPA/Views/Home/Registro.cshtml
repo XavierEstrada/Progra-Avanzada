@@ -1,4 +1,4 @@
-﻿
+﻿@model proyectoPA.Entidades.Usuario
 @{
     ViewBag.Title = "Registro";
     Layout = "~/Views/Shared/_LayoutExt.cshtml";
@@ -9,35 +9,32 @@
             <div class="border-left"></div>
             <div class="border-right"></div>
             <div class="inner">
-                <form class="form">
+                @using (Html.BeginForm("Registro", "Home", FormMethod.Post, new { @class = "form" }))
+                {
                     <p class="title">Registro</p>
                     <label>
-                        <input class="input" type="text" placeholder="" required="">
+                        @Html.TextBoxFor(m => m.Nombre, new { @class = "input", required = "required" })
                         <span>Nombre Completo</span>
                     </label>
-
                     <label>
-                        <input class="input" type="text" placeholder="" required="">
+                        @Html.TextBoxFor(m => m.Identificacion, new { @class = "input", required = "required" })
                         <span>Identificación</span>
                     </label>
-
                     <label>
-                        <input class="input" type="email" placeholder="" required="">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "input", type = "email", required = "required" })
                         <span>Correo Electrónico</span>
                     </label>
-
                     <label>
-                        <input class="input" type="password" placeholder="" required="">
+                        @Html.PasswordFor(m => m.Contrasenna, new { @class = "input", required = "required" })
                         <span>Contraseña</span>
                     </label>
-                    <button class="submit">Registrar</button>
+                    <button class="submit" type="submit">Registrar</button>
                     <p class="signin">¿Ya tienes una cuenta? <a href="@Url.Action("InicioSesion","Home")">Iniciar Sesión</a> </p>
-                </form>
+                }
             </div>
         </div>
     </div>
-
-
     <div class="corner-image">
         <img src="@Url.Content("~/root/img/banner-img.png")" alt="Decoración" />
     </div>
+</body>
