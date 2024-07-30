@@ -1,4 +1,5 @@
-﻿@{
+﻿@model proyectoPA.Entidades.Usuario
+@{
     Layout = "~/Views/Shared/_LayoutExt.cshtml";
     ViewBag.Title = "Home Page";
 }
@@ -12,12 +13,12 @@
                 <form class="form">
                     <p class="title">Inicio de Sesión</p>
                     <label>
-                        <input class="input" type="email" placeholder="Correo Electrónico" required>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "input", type = "email", required = "required" })
                         <span>Correo Electrónico</span>
                     </label>
 
                     <label>
-                        <input class="input" type="password" placeholder="Contraseña" required>
+                        @Html.PasswordFor(m => m.Contrasenna, new { @class = "input", required = "required" })
                         <span>Contraseña</span>
                     </label>
                     <button class="submit">Iniciar Sesión</button>
@@ -27,7 +28,7 @@
         </div>
     </div>
 
-    
+
     <div class="corner-image">
         <img src="@Url.Content("~/root/img/banner-img.png")" alt="Decoración" />
     </div>
