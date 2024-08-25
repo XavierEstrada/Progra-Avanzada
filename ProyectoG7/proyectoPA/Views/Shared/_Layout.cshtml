@@ -20,30 +20,62 @@
                     <div class="row-1">
                         <div class="fleft"><a>Cinema <span>World</span></a></div>
                         <ul>
-                            <li><a href="@Url.Action("Index","Home")"><img src="@Url.Content("~/root/img/icon1-act.gif")" alt="Home" /></a></li>
+                            <li>
+                                <span>
+                                    @if (Session["Usuario"] != null)
+                                    {
+
+                                        @Session["Usuario"]
+                                        <a href="@Url.Action("Perfil", "Usuario")" class="profile-link">Perfil</a>
+                                        <img src="@Url.Content("~/root/img/user.png")" alt="User" class="user-icon" />
+
+                                    }
+                                    else
+                                    {
+                                        @:Iniciar Sesion
+                                        <a href="@Url.Action("Index", "Home")"></a>
+                                        <img src="@Url.Content("~/root/img/icon1-act.gif")" alt="Home" />
+                                    }
+                                </span>
+                            </li>
                         </ul>
                     </div>
                     <div class="row-2">
                         <ul>
-                            <li><a href="@Url.Action("Index","Home")" class="active">Home</a></li>
-                            <li><a href="@Url.Action("Cartelera","Pelicula")">Cartelera</a></li>
-                            <li><a href="@Url.Action("QuienesSomos","Home")">Quienes Somos</a></li>
-                            <li><a href="@Url.Action("InicioSesion","Home")">Iniciar Sesión</a></li>
-                            <li><a href="@Url.Action("Registro","Home")">Registro</a></li>
+                            <li><a href="@Url.Action("Index", "Home")" class="active">Home</a></li>
+                            <li><a href="@Url.Action("Cartelera", "Pelicula")">Cartelera</a></li>
+                            <li><a href="@Url.Action("QuienesSomos", "Home")">Quienes Somos</a></li>
 
-
+                            @if (Session["UsuarioIdRol"] != null)
+                            {
+                                var usuarioIdRol = Session["UsuarioIdRol"] as int?;
+                                if (usuarioIdRol.HasValue)
+                                {
+                                    if (usuarioIdRol.Value == 2) // Rol de Cliente Registrado
+                                    {
+                                        <li><a href="@Url.Action("CerrarSesion", "Home")">Cerrar sesión</a></li>
+                                    }
+                                    else if (usuarioIdRol.Value == 1) // Rol de Administrador
+                                    {
+                                        <li><a href="@Url.Action("ConsultaPelicula", "Pelicula")">Mantenimiento Películas</a></li>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <li><a href="@Url.Action("InicioSesion", "Home")">Iniciar Sesión</a></li>
+                            }
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle">Películas</a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="@Url.Action("RegistroPelicula","Pelicula")">Agregar Película</a></li>
-                                    <li><a href="@Url.Action("ConsultaPelicula","Pelicula")">Consultar Películas</a></li>
+                                    <li><a href="@Url.Action("RegistroPelicula", "Pelicula")">Agregar Película</a></li>
+                                    <li><a href="@Url.Action("ConsultaPelicula", "Pelicula")">Consultar Películas</a></li>
                                 </ul>
                             </li>
-
-
                         </ul>
                     </div>
+
                 </div>
 
                 <div id="content">

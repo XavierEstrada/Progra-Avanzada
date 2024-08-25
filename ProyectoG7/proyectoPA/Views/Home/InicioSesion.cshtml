@@ -10,7 +10,7 @@
             <div class="border-left"></div>
             <div class="border-right"></div>
             <div class="inner">
-                <form class="form">
+                <form class="form" method="post" action="@Url.Action("InicioSesion", "Home")">
                     <p class="title">Inicio de Sesión</p>
                     <label>
                         @Html.TextBoxFor(m => m.Email, new { @class = "input", type = "email", required = "required" })

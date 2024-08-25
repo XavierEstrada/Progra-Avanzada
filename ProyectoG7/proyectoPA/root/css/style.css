@@ -567,3 +567,10 @@ input.input {
 }
 
 
+/* Mostrar el menú al pasar el cursor sobre el contenedor */
+.user-menu:hover .profile-link {
+	display: block;
+}
+	.profile-link:hover {
+		background-color: #f0f0f0; /* Color de fondo al pasar el cursor */
+	}

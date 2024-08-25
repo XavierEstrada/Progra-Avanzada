@@ -1,16 +1,13 @@
 ﻿using proyectoPA.BaseDatos;
 using proyectoPA.Entidades;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace proyectoPA.Models
 {
     public class UsuarioModel
     {
-
-        public bool RegistraUsuario(Usuario user) {
+        public bool RegistraUsuario(Usuario user)
+        {
 
 
             var rowsAffected = 0;
@@ -20,7 +17,7 @@ namespace proyectoPA.Models
             tablaU.identificacion = user.Identificacion;
             tablaU.email = user.Email;
             tablaU.contrasenna = user.Contrasenna;
-            user.IdRol = 2;
+            tablaU.idRol = 2;
 
             using (var context = new CINE_DBEntities())
             {
@@ -35,5 +32,27 @@ namespace proyectoPA.Models
 
 
 
+        public Usuario ValidarUsuario(string email, string contrasenna)
+        {
+            using (var context = new CINE_DBEntities())
+            {
+                var usuario = context.tUsuario
+                    .FirstOrDefault(u => u.email== email && u.contrasenna == contrasenna);
+
+                if (usuario != null)
+                {
+                    return new Usuario
+                    {
+                        Id_usuario = usuario.id_usuario,
+                        Nombre = usuario.nombre,
+                        Identificacion = usuario.identificacion,
+                        Email = usuario.email,
+                        Contrasenna = usuario.contrasenna,
+                        IdRol = (byte)usuario.idRol
+                    };
+                }
+                return null;
+            }
+        }
     }
 }

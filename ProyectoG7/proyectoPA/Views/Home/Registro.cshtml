@@ -11,22 +11,26 @@
             <div class="inner">
                 @using (Html.BeginForm("Registro", "Home", FormMethod.Post, new { @class = "form" }))
                 {
-                    <p class="title">Registro</p>
+                    <p class="title display-4">Registro</p>
                     <label>
+
+                        <span>Nombre Completo:</span>
                         @Html.TextBoxFor(m => m.Nombre, new { @class = "input", required = "required" })
-                        <span>Nombre Completo</span>
                     </label>
                     <label>
+                        <span>Identificación:</span>
                         @Html.TextBoxFor(m => m.Identificacion, new { @class = "input", required = "required" })
-                        <span>Identificación</span>
+
                     </label>
                     <label>
+                        <span>Correo Electrónico:</span>
                         @Html.TextBoxFor(m => m.Email, new { @class = "input", type = "email", required = "required" })
-                        <span>Correo Electrónico</span>
+
                     </label>
                     <label>
+                        <span>Contraseña</span>:
                         @Html.PasswordFor(m => m.Contrasenna, new { @class = "input", required = "required" })
-                        <span>Contraseña</span>
+
                     </label>
                     <button class="submit" type="submit">Registrar</button>
                     <p class="signin">¿Ya tienes una cuenta? <a href="@Url.Action("InicioSesion","Home")">Iniciar Sesión</a> </p>
