@@ -1,34 +1,95 @@
-﻿@model  List<proyectoPA.BaseDatos.tPelicula>
+﻿@model  proyectoPA.Entidades.Reserva
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Cartelera";
 }
 
-
-<div class="content">
-    <h4>Lista de Peliculas</h4>
-    <ul class="movies">
-        <li>
-            <h4>Toy Story 3</h4>
-            <img src="~/root/img/1page-img2.jpg" alt="Toy Story 3">
-            <p>Eget nunc nunc mattitor curabitur piscipis nec ac hac pellus sem intesque sociis. Metusmetuer hendimentesque diam at orbi sempor.</p>
-            <div class="wrapper"><button>Detalles</button></div>
-        </li>
-        <li>
-            <h4>Finding Nemo</h4>
-            <img class="responsive-img" src="~/root/img/nemo2.jpg" alt="Finding Nemo">
-            <p>Eget nunc nunc mattitor curabitur piscipis nec ac hac pellus sem intesque sociis. Metusmetuer hendimentesque diam at orbi sempor.</p>
-            <div class="wrapper"><button>Detalles</button></div>
-        </li>
-        <li>
-            <h4>The Incredibles</h4>
-            <img class="responsive-img" src="~/root/img/increibles.jpg" alt="The Incredibles">
-            <p>Eget nunc nunc mattitor curabitur piscipis nec ac hac pellus sem intesque sociis. Metusmetuer hendimentesque diam at orbi sempor.</p>
-            <div class="wrapper"><button>Detalles</button></div>
-        </li>
-    </ul>
-</div>
+<link rel="StyleSheet" href="~/root/css/StyleSheet.css" />
 
 
+<body>
+    <div id="main" class="form-reserva">
+        <div class="box">
+            <div class="border-left"></div>
+            <div class="border-right"></div>
+            <div class="inner">
+                @using (Html.BeginForm("Cartelera", "Reserva", FormMethod.Post, new { @class = "form" }))
+                {
+                    <p class="title">Reserva</p>
+                    <div class="form-group">
+                        @Html.Label("Nombre", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(r => r.Nombre, new
+                        {
+                            @class = "form-control",
+                            @placeholder = "Nombre"
+                        })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Id Sala", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(r => r.IdSala, new
+                        {
+                            @class = "form-control",
+                            @placeholder = "Id Sala"
+                        })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Fecha Hora", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(r => r.FechaHora, new
+                   {
+                       @type = "date",
+                       @class = "form-control",
+                       @placeholder = "Fecha Hora"
+                   })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Precio", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Precio, new
+                   {
+                       @class = "form-control",
+                       @placeholder = "Precio"
+                   })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Cantidad Entradas", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Cantidad_Entradas, new
+                   {
+                       @class = "form-control",
+                       @placeholder = "Cantidad Entradas"
+                   })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Monto Total", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.MontoTotal, new
+                        {
+                            @class = "form-control",
+                            @placeholder = "Monto Total"
+                        })
+                    </div>
+
+                    
+
+                    <div class="form-group text-center mt-4">
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="corner-image">
+        <img src="@Url.Content("~/root/img/banner-img.png")" alt="Decoración" />
+    </div>
+
+
+
+</body>
+
+
+
+<script src="/scripts/UrlPosterImg.js" defer></script>
 

@@ -24,7 +24,7 @@ namespace proyectoPA.Models
                 poster_url = movie.Poster_Url
             };
 
-            using (var context = new CINE_DBEntities())
+            using (var context = new CINE_DBEntities1())
             {
                 context.tPelicula.Add(tablaP);
                 rowsAffected = context.SaveChanges();
@@ -36,7 +36,7 @@ namespace proyectoPA.Models
         // Método para consultar todas las películas
         public List<tPelicula> ConsultarPeli()
         {
-            using (var context = new CINE_DBEntities())
+            using (var context = new CINE_DBEntities1())
             {
                 return context.tPelicula.ToList();
             }
@@ -47,7 +47,7 @@ namespace proyectoPA.Models
         {
             try
             {
-                using (var context = new CINE_DBEntities())
+                using (var context = new CINE_DBEntities1())
                 {
                     // Encuentra la película por su ID en la tabla tPelicula
                     var pelicula = context.tPelicula.Find(id);

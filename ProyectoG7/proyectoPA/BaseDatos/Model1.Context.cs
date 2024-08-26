@@ -13,10 +13,10 @@ namespace proyectoPA.BaseDatos
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CINE_DBEntities : DbContext
+    public partial class CINE_DBEntities1 : DbContext
     {
-        public CINE_DBEntities()
-            : base("name=CINE_DBEntities")
+        public CINE_DBEntities1()
+            : base("name=CINE_DBEntities1")
         {
         }
     
@@ -25,7 +25,6 @@ namespace proyectoPA.BaseDatos
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tCompra> tCompra { get; set; }
         public virtual DbSet<tErrorLog> tErrorLog { get; set; }
         public virtual DbSet<tFuncion> tFuncion { get; set; }

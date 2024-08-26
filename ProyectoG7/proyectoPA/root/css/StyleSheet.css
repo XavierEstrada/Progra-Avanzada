@@ -1,0 +1,71 @@
+﻿.form-reserva {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+    .form-reserva .box {
+        background: #191818;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        position: relative;
+    }
+
+    .form-reserva .inner {
+        padding: 20px;
+    }
+
+    .form-reserva .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-reserva .form-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-reserva .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+        .form-reserva .form-control::placeholder {
+            color: #999;
+        }
+
+    .form-reserva .form-group.text-center.mt-4 {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .form-reserva .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .form-reserva .btn-primary {
+        background-color: #000;
+        color: white;
+    }
+
+        .form-reserva .btn-primary:hover {
+            background-color: #000;
+        }
+
+    .form-reserva .corner-image img {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 150px;
+        height: auto;
+    }

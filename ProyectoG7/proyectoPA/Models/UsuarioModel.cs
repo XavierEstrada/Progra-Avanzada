@@ -20,7 +20,7 @@ namespace proyectoPA.Models
             tablaU.contrasenna = user.Contrasenna;
             tablaU.idRol = 2;
 
-            using (var context = new CINE_DBEntities())
+            using (var context = new CINE_DBEntities1())
             {
                 context.tUsuario.Add(tablaU);
                 rowsAffected = context.SaveChanges();
@@ -35,7 +35,7 @@ namespace proyectoPA.Models
 
         public Usuario ValidarUsuario(string email, string contrasenna)
         {
-            using (var context = new CINE_DBEntities())
+            using (var context = new CINE_DBEntities1())
             {
                 var usuario = context.tUsuario
                     .FirstOrDefault(u => u.email == email && u.contrasenna == contrasenna);
@@ -59,7 +59,7 @@ namespace proyectoPA.Models
 
         public List<tUsuario> ConsultarUsuarios()
         {
-            using (var context = new CINE_DBEntities())
+            using (var context = new CINE_DBEntities1())
             {
 
                 return (from x in context.tUsuario

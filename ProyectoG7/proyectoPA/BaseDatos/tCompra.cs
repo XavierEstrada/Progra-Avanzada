@@ -21,7 +21,6 @@ namespace proyectoPA.BaseDatos
         public string metodo_pago { get; set; }
         public decimal total { get; set; }
     
-        public virtual tReserva tReserva { get; set; }
         public virtual tUsuario tUsuario { get; set; }
     }
 }
