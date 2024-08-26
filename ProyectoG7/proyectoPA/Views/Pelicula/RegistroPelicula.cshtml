@@ -1,7 +1,7 @@
 ﻿@model proyectoPA.Entidades.Pelicula
 
 @{
-    Layout = "~/Views/Shared/_LayoutExt.cshtml";    
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     ViewBag.Title = "RegistroPelicula";
 }
 
@@ -75,16 +75,8 @@
                         {
                             @type = "text",
                             @class = "form-control",
-                            @placeholder = "Ingrese la URL de la imagen",
-                            @id = "PosterUrlInput"
+                            @placeholder = "Ingrese la URL de la imagen"
                         })
-                    </div>
-
-                    <div class="form-group">
-                        <div class="image-preview mt-3">
-                            <h5>Vista previa de la imagen:</h5>
-                            <img id="imagePreview" src="" alt="Imagen no disponible" class="img-fluid" />
-                        </div>
                     </div>
 
                     <div class="form-group text-center mt-4">
@@ -97,9 +89,12 @@
     <div class="corner-image">
         <img src="@Url.Content("~/root/img/banner-img.png")" alt="Decoración" />
     </div>
-    </body>
 
 
 
-    <script src="/scripts/UrlPosterImg.js" defer></script>
+</body>
+
+
+
+<script src="/scripts/UrlPosterImg.js" defer></script>
 

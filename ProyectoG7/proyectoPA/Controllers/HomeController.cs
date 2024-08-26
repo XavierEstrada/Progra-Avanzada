@@ -12,11 +12,15 @@ namespace proyectoPA.Controllers
 
         public ActionResult Index()
         {
+            // Configurar el layout basado en el rol del usuario
+            ConfigurarLayout();
             return View();
         }
 
         public ActionResult InicioSesion()
         {
+            // Configurar el layout para la página de inicio de sesión
+            ViewBag.Layout = "~/Views/Shared/_Layout.cshtml";
             return View();
         }
 
@@ -39,7 +43,6 @@ namespace proyectoPA.Controllers
                     Usuario user = usuarioU.ValidarUsuario(usuario.Email, usuario.Contrasenna);
                     if (user != null)
                     {
-                        // Aquí puedes establecer una sesión y redirigir al usuario a la página principal
                         Session["Usuario"] = user.Nombre;
                         Session["UsuarioIdRol"] = user.IdRol;
                         return RedirectToAction("Index", "Home");
@@ -65,6 +68,7 @@ namespace proyectoPA.Controllers
         [HttpGet]
         public ActionResult Registro()
         {
+            ViewBag.Layout = "~/Views/Shared/_Layout.cshtml";
             return View();
         }
 
@@ -101,7 +105,21 @@ namespace proyectoPA.Controllers
 
         public ActionResult QuienesSomos()
         {
+            ConfigurarLayout();
             return View();
+        }
+
+        private void ConfigurarLayout()
+        {
+   
+            if (Session["UsuarioIdRol"] != null && Session["UsuarioIdRol"].ToString() == "1") // Rol de Administrador
+            {
+                ViewBag.Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+            }
+            else
+            {
+                ViewBag.Layout = "~/Views/Shared/_Layout.cshtml";
+            }
         }
     }
 }

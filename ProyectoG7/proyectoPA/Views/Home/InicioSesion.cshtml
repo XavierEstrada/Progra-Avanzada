@@ -13,13 +13,14 @@
                 <form class="form" method="post" action="@Url.Action("InicioSesion", "Home")">
                     <p class="title">Inicio de Sesión</p>
                     <label>
+                        <span>Correo Electrónico:</span>
                         @Html.TextBoxFor(m => m.Email, new { @class = "input", type = "email", required = "required" })
-                        <span>Correo Electrónico</span>
                     </label>
 
                     <label>
+                        <span>Contraseña:</span>
                         @Html.PasswordFor(m => m.Contrasenna, new { @class = "input", required = "required" })
-                        <span>Contraseña</span>
+                        
                     </label>
                     <button class="submit">Iniciar Sesión</button>
                     <p class="signin">¿Necesitas una cuenta? <a href="@Url.Action("Registro","Home")">Registro</a></p>

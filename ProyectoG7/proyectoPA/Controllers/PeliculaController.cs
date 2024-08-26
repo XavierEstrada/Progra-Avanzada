@@ -1,4 +1,4 @@
-﻿    using proyectoPA.Models;
+﻿using proyectoPA.Models;
 using proyectoPA.Entidades;
 using System;
 using System.Collections.Generic;
@@ -33,17 +33,16 @@ namespace proyectoPA.Controllers
                     var respuesta = peliculaM.NuevaPelicula(movie);
                     if (respuesta)
                     {
-                        ViewBag.Mensaje = "Pelicula registrada con éxito.";
-                        return RedirectToAction("Index", "Home");
+                        // Redirige a la acción ConsultaPelicula si la película se registró correctamente
+                        return RedirectToAction("ConsultaPelicula", "Pelicula");
                     }
                     else
                     {
-                        ViewBag.Mensaje = "Pelicula no registrada. Por favor, revise la información proporcionada.";
+                        ViewBag.Mensaje = "Película no registrada. Por favor, revise la información proporcionada.";
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Manejo de errores
                     ViewBag.Mensaje = "Ocurrió un error al registrar la película: " + ex.Message;
                 }
             }
@@ -52,10 +51,31 @@ namespace proyectoPA.Controllers
                 ViewBag.Mensaje = "Por favor, corrija los errores en el formulario.";
             }
 
+            // Si no es una solicitud Ajax, vuelve a mostrar el formulario con los errores
             return View(movie);
         }
-
-
+        [HttpPost]
+        public JsonResult EliminarPelicula(int id)
+        {
+            try
+            {
+                bool resultado = peliculaM.EliminarPelicula(id);
+                if (resultado)
+                {
+                    return Json(new { success = true });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "No se pudo eliminar la película. Puede que no exista." });
+                }
+            }
+            catch (Exception ex)
+            {
+                // Opcionalmente, registrar el error
+                System.Diagnostics.Debug.WriteLine("Error en EliminarPelicula: " + ex.Message);
+                return Json(new { success = false, message = "Ocurrió un error al procesar la solicitud." });
+            }
+        }
 
 
 

@@ -1,5 +1,6 @@
 ﻿using proyectoPA.BaseDatos;
 using proyectoPA.Entidades;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace proyectoPA.Models
@@ -37,7 +38,7 @@ namespace proyectoPA.Models
             using (var context = new CINE_DBEntities())
             {
                 var usuario = context.tUsuario
-                    .FirstOrDefault(u => u.email== email && u.contrasenna == contrasenna);
+                    .FirstOrDefault(u => u.email == email && u.contrasenna == contrasenna);
 
                 if (usuario != null)
                 {
@@ -53,6 +54,19 @@ namespace proyectoPA.Models
                 }
                 return null;
             }
+        }
+
+
+        public List<tUsuario> ConsultarUsuarios()
+        {
+            using (var context = new CINE_DBEntities())
+            {
+
+                return (from x in context.tUsuario
+                        select x).ToList();
+            }
+
+
         }
     }
 }
