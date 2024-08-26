@@ -122,4 +122,10 @@ namespace proyectoPA.Controllers
             }
         }
     }
+		public ActionResult Perfil()
+		{
+			return View();
+		}
+
+	}
 }
