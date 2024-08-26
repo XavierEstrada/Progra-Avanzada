@@ -121,7 +121,7 @@ namespace proyectoPA.Controllers
                 ViewBag.Layout = "~/Views/Shared/_Layout.cshtml";
             }
         }
-    }
+    
 		public ActionResult Perfil()
 		{
 			return View();
