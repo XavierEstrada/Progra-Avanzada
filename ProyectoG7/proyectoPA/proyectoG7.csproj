@@ -248,6 +248,7 @@
     <Content Include="root\img\tail-bottom.gif" />
     <Content Include="root\img\tail-top.gif" />
     <Content Include="root\img\textarea-bg.gif" />
+    <Content Include="root\img\user.png" />
     <Content Include="root\js\cufon-replace.js" />
     <Content Include="root\js\cufon-yui.js" />
     <Content Include="root\js\Gill_Sans_400.font.js" />
@@ -316,10 +317,11 @@
     <Content Include="Views\Pelicula\ConsultaPelicula.cshtml" />
     <Content Include="Views\Pelicula\Cartelera.cshtml" />
     <Content Include="Views\Home\QuienesSomos.cshtml" />
-    <Content Include="Views\Usuario\Perfil.cshtml" />
+    <Content Include="Views\Home\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
