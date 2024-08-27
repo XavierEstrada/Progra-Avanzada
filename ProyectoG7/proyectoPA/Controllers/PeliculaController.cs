@@ -63,20 +63,33 @@ namespace proyectoPA.Controllers
             return Json(new { success = exito });
         }
 
-        public ActionResult ConsultaPelicula() {
+        public ActionResult ConsultaPelicula()
+        {
 
             var respuesta = peliculaM.ConsultarPeli();
             return View(respuesta);
         }
 
+
         [HttpGet]
         public ActionResult Cartelera()
+
         {
-            return View();
+            var peliculasDB = peliculaM.ConsultarPeli();
+
+            var peliculas = peliculasDB.Select(p => new Pelicula
+            {
+                IdPelicula = p.id_pelicula,
+                Titulo = p.titulo,
+                Duracion = p.duracion,
+                Director = p.director,
+                Sinopsis = p.sinopsis,
+                Fecha_estreno = p.fecha_estreno,
+                Clasificacion = p.clasificacion,
+                Poster_Url = p.poster_url
+            }).ToList();
+
+            return View(peliculas);
         }
-
-
-
-
     }
 }
