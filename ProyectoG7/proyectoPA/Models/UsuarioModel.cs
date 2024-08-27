@@ -29,7 +29,6 @@ namespace proyectoPA.Models
 
             return (rowsAffected > 0 ? true : false);
 
-
         }
 
 
@@ -70,7 +69,7 @@ namespace proyectoPA.Models
                                    Nombre = u.nombre,
                                    Identificacion = u.identificacion,
                                    Email = u.email,
-                                   NombreRol = r.rolNombre 
+                                   NombreRol = r.rolNombre
                                };
 
                 return usuarios.ToList();
@@ -133,11 +132,6 @@ namespace proyectoPA.Models
                 }
                 return false;
             }
-
-
-
         }
-
-
-}
     }
+}

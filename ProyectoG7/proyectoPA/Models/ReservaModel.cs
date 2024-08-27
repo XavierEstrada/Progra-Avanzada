@@ -1,29 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using proyectoPA.BaseDatos;
+﻿using proyectoPA.BaseDatos;
 using proyectoPA.Entidades;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace proyectoPA.Models
 {
     public class ReservaModel
     {
-        //public bool NuevaReserva(Reserva reserva)
+        // Obtiene una lista de todas las películas disponibles
+        public List<Pelicula> ObtenerPeliculas()
+        {
+            using (var context = new CINE_DBEntities())
+            {
+                return context.tPelicula.ToList();
+            }
+        }
+
+        // Obtiene los detalles de una película específica
+        public Pelicula ObtenerPeliculaPorId(int id)
+        {
+            using (var context = new CINE_DBEntities())
+            {
+                return context.tPelicula.FirstOrDefault(p => p.id_pelicula == id);
+            }
+        }
+
+        //// Método para registrar una reserva
+        //public bool RegistrarReserva(Reserva reserva)
         //{
         //    var rowsAffected = 0;
-
         //    var tablaR = new tReserva
         //    {
-        //        //preguntar si nombre idsala y precio se incluyen a la tabla tReserva
-        //      //  nombre = reserva.Nombre,
-        //        //idSala = reserva.IdSala,
-        //        fecha_reserva = reserva.FechaHora,
-        //        cantidad_entradas = reserva.Cantidad_Entradas,
-        //        //precio = reserva.Precio,
-        //        total_pagado = reserva.MontoTotal,
-                
+        //        Nombre = reserva.Nombre,
+        //        IdSala = reserva.IdSala,
+        //        FechaHora = reserva.FechaHora,
+        //        Precio = reserva.Precio,
+        //        CantidadEntradas = reserva.Cantidad_Entradas
         //    };
 
         //    using (var context = new CINE_DBEntities())
