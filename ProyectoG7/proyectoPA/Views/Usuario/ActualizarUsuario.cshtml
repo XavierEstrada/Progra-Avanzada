@@ -1,0 +1,44 @@
+﻿@model proyectoPA.Entidades.Usuario
+@{
+    ViewBag.Title = "Actualizar Usuario";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<body>
+    <div id="main">
+        <div class="box">
+            <div class="border-left"></div>
+            <div class="border-right"></div>
+            <div class="inner">
+                @using (Html.BeginForm("ActualizarUsuario", "Usuario", FormMethod.Post, new { @class = "form" }))
+                {
+                    <p class="title display-4">Registro</p>
+                    <label>
+
+                        <span>Nombre Completo:</span>
+                        @Html.TextBoxFor(m => m.Nombre, new { @class = "input", required = "required" })
+                    </label>
+                    <label>
+                        <span>Identificación:</span>
+                        @Html.TextBoxFor(m => m.Identificacion, new { @class = "input", required = "required" })
+
+                    </label>
+                    <label>
+                        <span>Correo Electrónico:</span>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "input", type = "email", required = "required" })
+
+                    </label>
+                    <label>
+                        <span>Contraseña</span>:
+                        @Html.PasswordFor(m => m.Contrasenna, new { @class = "input", required = "required" })
+
+                    </label>
+                    <button class="submit" type="submit">Actualizar</button>
+                 
+                }
+            </div>
+        </div>
+    </div>
+    <div class="corner-image">
+        <img src="@Url.Content("~/root/img/banner-img.png")" alt="Decoración" />
+    </div>
+</body>

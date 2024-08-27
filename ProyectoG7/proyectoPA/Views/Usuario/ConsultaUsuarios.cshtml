@@ -7,7 +7,6 @@
 
 <br>
 <h4>Lista de Usuarios</h4>
-@Html.ActionLink("Agregar Usuarios", "Registro", "Home", null, new { @class = "btn btn-success", style = "margin-bottom: 20px;" })
 <hr>
 
 <br>
@@ -16,7 +15,7 @@
     <thead>
         <tr>
             <th>Nombre</th>
-            <th>Identificación</th>
+            <th>Identificación</th> 
             <th>Email</th>
             <th>Rol</th>
             <th></th>
@@ -34,8 +33,9 @@
                 <td>
                     <button class="btn btn-danger btn-eliminar" data-id="@item.IdUsuario">Eliminar</button>
                 </td>
+                
                 <td>
-                    <button class="btn btn-primary">Actualizar</button>
+                    <a href="@Url.Action("ActualizarUsuario", "Usuario", new { id = item.IdUsuario })" class="btn btn-primary">Actualizar</a>
                 </td>
             </tr>
         }

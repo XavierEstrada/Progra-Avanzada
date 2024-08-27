@@ -27,5 +27,48 @@ namespace proyectoPA.Controllers
             bool exito = usuarioC.EliminarUsuario(id);
             return Json(new { success = exito });
         }
+
+
+        // Acción para cargar la vista de actualización con los datos del usuario
+        public ActionResult ActualizarUsuario(int id)
+        {
+            // Obtiene el usuario por ID
+            Usuario usuario = usuarioC.ObtenerUsuarioPorId(id);
+            if (usuario == null)
+            {
+                return HttpNotFound();
+            }
+            return View(usuario);
+        }
+
+        // Acción para manejar la actualización del usuario
+        [HttpPost]
+        public ActionResult ActualizarUsuario(Usuario usuario)
+        {
+            if (ModelState.IsValid)
+            {
+                bool exito = usuarioC.ActualizarUsuario(usuario);
+                if (exito)
+                {
+                    return RedirectToAction("ConsultaUsuarios"); // Redirige a la vista de consulta
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Error al actualizar el usuario.");
+                }
+            }
+            return View(usuario);
+        }
+
+
+
+
+
+
     }
+
+
+
+
+
 }

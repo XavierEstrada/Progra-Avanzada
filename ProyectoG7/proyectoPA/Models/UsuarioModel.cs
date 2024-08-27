@@ -91,8 +91,53 @@ namespace proyectoPA.Models
                 return false;
             }
         }
-    }
+
+        // Método para obtener un usuario por su ID
+        public Usuario ObtenerUsuarioPorId(int id)
+        {
+            using (var context = new CINE_DBEntities())
+            {
+                var usuario = context.tUsuario.Find(id);
+                if (usuario != null)
+                {
+                    return new Usuario
+                    {
+                        Id_usuario = usuario.id_usuario,
+                        Nombre = usuario.nombre,
+                        Identificacion = usuario.identificacion,
+                        Email = usuario.email,
+                        Contrasenna = usuario.contrasenna,
+                        IdRol = (byte)usuario.idRol
+                    };
+                }
+                return null;
+            }
+        }
+
+        // Método para actualizar un usuario
+        public bool ActualizarUsuario(Usuario user)
+        {
+            using (var context = new CINE_DBEntities())
+            {
+                var usuario = context.tUsuario.Find(user.Id_usuario);
+                if (usuario != null)
+                {
+                    usuario.nombre = user.Nombre;
+                    usuario.identificacion = user.Identificacion;
+                    usuario.email = user.Email;
+                    usuario.contrasenna = user.Contrasenna;
+                    usuario.idRol = user.IdRol;
+
+                    var rowsAffected = context.SaveChanges();
+                    return rowsAffected > 0;
+                }
+                return false;
+            }
+
+
+
+        }
 
 
 }
-
+    }
