@@ -12,5 +12,7 @@ namespace proyectoPA.ViewModels
         public string Identificacion { get; set; }
         public string Email { get; set; }
         public string NombreRol { get; set; }
+
+        //public int numero { get; set; }
     }
 }
