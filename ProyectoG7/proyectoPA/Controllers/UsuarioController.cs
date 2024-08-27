@@ -1,10 +1,5 @@
 ﻿using proyectoPA.Models;
 using proyectoPA.Entidades;
-using proyectoPA.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace proyectoPA.Controllers
@@ -60,20 +55,9 @@ namespace proyectoPA.Controllers
             return View(usuario);
         }
 
-
-
-		public ActionResult Perfil()
-		{
-			return View();
-		}
-
-
-
+        public ActionResult Perfil()
+        {
+            return View();
+        }
     }
-
-
-
-
-
-
-	}
+}

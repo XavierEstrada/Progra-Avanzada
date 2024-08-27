@@ -12,6 +12,8 @@ namespace proyectoPA.BaseDatos
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class CINE_DBEntities : DbContext
     {
@@ -34,5 +36,26 @@ namespace proyectoPA.BaseDatos
         public virtual DbSet<tRoles> tRoles { get; set; }
         public virtual DbSet<tSala> tSala { get; set; }
         public virtual DbSet<tUsuario> tUsuario { get; set; }
+    
+        public virtual int sp_Reserva(Nullable<int> idPelicula, Nullable<System.DateTime> fecha, Nullable<int> sala, Nullable<int> cantidadBoletos)
+        {
+            var idPeliculaParameter = idPelicula.HasValue ?
+                new ObjectParameter("IdPelicula", idPelicula) :
+                new ObjectParameter("IdPelicula", typeof(int));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("Fecha", fecha) :
+                new ObjectParameter("Fecha", typeof(System.DateTime));
+    
+            var salaParameter = sala.HasValue ?
+                new ObjectParameter("Sala", sala) :
+                new ObjectParameter("Sala", typeof(int));
+    
+            var cantidadBoletosParameter = cantidadBoletos.HasValue ?
+                new ObjectParameter("CantidadBoletos", cantidadBoletos) :
+                new ObjectParameter("CantidadBoletos", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Reserva", idPeliculaParameter, fechaParameter, salaParameter, cantidadBoletosParameter);
+        }
     }
 }

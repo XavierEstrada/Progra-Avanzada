@@ -1,118 +1,38 @@
 ﻿using System;
-using proyectoPA.Models;
-using proyectoPA.Entidades;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-
-
+using proyectoPA.Models;
 
 namespace proyectoPA.Controllers
 {
-
     public class ReservaController : Controller
     {
+        private ReservaModel reservaModel = new ReservaModel();
 
-        ReservaModel ReservaM = new ReservaModel();
-
-        [HttpGet]
-        public ActionResult ReservaPelicula()
+        // Acción para mostrar los detalles de la película y el formulario de reserva
+        public ActionResult ReservarPelicula(int idPelicula)
         {
-            return View();
-        }
+            var pelicula = reservaModel.ObtenerDetallesPelicula(idPelicula);
+            var salas = reservaModel.ObtenerSalas();
 
-        [HttpGet]
-        public ActionResult ReservaPelicula(int id)
-        {
-            var pelicula = reservaModel.ObtenerPeliculaPorId(id);
             if (pelicula == null)
             {
                 return HttpNotFound();
             }
 
-            // Crear un ViewModel para la vista
-            var viewModel = new ReservaViewModel
-            {
-                Pelicula = pelicula,
-                FechaSeleccionada = DateTime.Now.Date,
-                Salas = ObtenerSalas() // Método para obtener la lista de salas
-            };
+            ViewBag.Salas = new SelectList(salas, "IdSala", "Nombre");
 
-            return View(viewModel);
+            return View(pelicula);
         }
 
+        // Acción para manejar la reserva
         [HttpPost]
-        public ActionResult ReservaPelicula(ReservaViewModel model)
+        public ActionResult ReservarPelicula(int idPelicula, int idSala, DateTime fecha, int cantidadEntradas)
         {
-            if (ModelState.IsValid)
-            {
-                var reserva = new Reserva
-                {
-                    Nombre = "Nombre del Usuario", // Reemplazar con el nombre del usuario autenticado
-                    IdSala = model.IdSala,
-                    FechaHora = model.FechaSeleccionada,
-                    Precio = model.PrecioPorEntrada,
-                    Cantidad_Entradas = model.CantidadEntradas
-                };
+            // Lógica para guardar la reserva en la base de datos
+            reservaModel.RealizarReserva(idPelicula, idSala, fecha, cantidadEntradas);
 
-                if (reservaModel.RegistrarReserva(reserva))
-                {
-                    // Redirigir o mostrar mensaje de éxito
-                }
-                else
-                {
-                    // Mostrar mensaje de error
-                }
-            }
-
-            return View(model);
-        }
-
-        private SelectList ObtenerSalas()
-        {
-            // Método para obtener la lista de salas
-            // Esto depende de cómo esté estructurada tu base de datos
-            var salas = new List<SelectListItem>
-            {
-                new SelectListItem { Value = "1", Text = "Sala 1" },
-                new SelectListItem { Value = "2", Text = "Sala 2" },
-                // Agregar más salas aquí
-            };
-
-            return new SelectList(salas, "Value", "Text");
+            // Redirigir a una vista de confirmación o a otra acción
+            return RedirectToAction("Index", "Home");
         }
     }
-
-    //[HttpPost]
-    //public ActionResult Reservar(Reserva model)
-    //{
-    //    if (ModelState.IsValid)
-    //    {
-    //        // Lógica para extraer el precio de la base de datos según la sala
-    //        //si es en 2 o 3d
-    //        //var sala = _context.Salas.Find(model.IdSala);
-    //        //if (sala == null)
-    //        //{
-    //        //ModelState.AddModelError("IdSala", "Sala no encontrada.");
-    //        ////return View(model);
-    //        //}
-
-    //        //model.Precio = sala.Precio; 
-
-
-    //        if (model.FechaHora < DateTime.Now)
-    //        {
-    //            ModelState.AddModelError("FechaHora", "La fecha y hora no pueden ser anteriores a la actual.");
-    //            return View(model);
-    //        }
-
-
-    //        TempData["Success"] = "Reserva realizada exitosamente.";
-    //        return RedirectToAction("Confirmacion");
-    //    }
-
-    //    return View(model);
-    //}
-
 }

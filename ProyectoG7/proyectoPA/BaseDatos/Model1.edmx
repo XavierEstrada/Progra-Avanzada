@@ -208,6 +208,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_Reserva" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdPelicula" Type="int" Mode="In" />
+          <Parameter Name="Fecha" Type="date" Mode="In" />
+          <Parameter Name="Sala" Type="int" Mode="In" />
+          <Parameter Name="CantidadBoletos" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="CINE_DBModelStoreContainer">
           <EntitySet Name="tCompra" EntityType="Self.tCompra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tErrorLog" EntityType="Self.tErrorLog" Schema="dbo" store:Type="Tables" />
@@ -494,6 +500,12 @@
             <End Role="tGenero" EntitySet="tGenero" />
             <End Role="tPelicula" EntitySet="tPelicula" />
           </AssociationSet>
+          <FunctionImport Name="sp_Reserva">
+            <Parameter Name="IdPelicula" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="Sala" Mode="In" Type="Int32" />
+            <Parameter Name="CantidadBoletos" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -605,6 +617,7 @@
               <ScalarProperty Name="id_pelicula" ColumnName="id_pelicula" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_Reserva" FunctionName="CINE_DBModel.Store.sp_Reserva" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
