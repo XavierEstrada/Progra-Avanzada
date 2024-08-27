@@ -37,25 +37,29 @@ namespace proyectoPA.BaseDatos
         public virtual DbSet<tSala> tSala { get; set; }
         public virtual DbSet<tUsuario> tUsuario { get; set; }
     
-        public virtual int sp_Reserva(Nullable<int> idPelicula, Nullable<System.DateTime> fecha, Nullable<int> sala, Nullable<int> cantidadBoletos)
+        public virtual ObjectResult<sp_Reserva_Result> sp_Reserva(Nullable<int> id_pelicula, Nullable<System.DateTime> fecha_reserva, Nullable<int> id_sala, Nullable<int> cantidad_entradas, Nullable<int> id_usuario)
         {
-            var idPeliculaParameter = idPelicula.HasValue ?
-                new ObjectParameter("IdPelicula", idPelicula) :
-                new ObjectParameter("IdPelicula", typeof(int));
+            var id_peliculaParameter = id_pelicula.HasValue ?
+                new ObjectParameter("id_pelicula", id_pelicula) :
+                new ObjectParameter("id_pelicula", typeof(int));
     
-            var fechaParameter = fecha.HasValue ?
-                new ObjectParameter("Fecha", fecha) :
-                new ObjectParameter("Fecha", typeof(System.DateTime));
+            var fecha_reservaParameter = fecha_reserva.HasValue ?
+                new ObjectParameter("fecha_reserva", fecha_reserva) :
+                new ObjectParameter("fecha_reserva", typeof(System.DateTime));
     
-            var salaParameter = sala.HasValue ?
-                new ObjectParameter("Sala", sala) :
-                new ObjectParameter("Sala", typeof(int));
+            var id_salaParameter = id_sala.HasValue ?
+                new ObjectParameter("id_sala", id_sala) :
+                new ObjectParameter("id_sala", typeof(int));
     
-            var cantidadBoletosParameter = cantidadBoletos.HasValue ?
-                new ObjectParameter("CantidadBoletos", cantidadBoletos) :
-                new ObjectParameter("CantidadBoletos", typeof(int));
+            var cantidad_entradasParameter = cantidad_entradas.HasValue ?
+                new ObjectParameter("cantidad_entradas", cantidad_entradas) :
+                new ObjectParameter("cantidad_entradas", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Reserva", idPeliculaParameter, fechaParameter, salaParameter, cantidadBoletosParameter);
+            var id_usuarioParameter = id_usuario.HasValue ?
+                new ObjectParameter("id_usuario", id_usuario) :
+                new ObjectParameter("id_usuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Reserva_Result>("sp_Reserva", id_peliculaParameter, fecha_reservaParameter, id_salaParameter, cantidad_entradasParameter, id_usuarioParameter);
         }
     }
 }

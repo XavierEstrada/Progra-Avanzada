@@ -1,38 +1,46 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using proyectoPA.Models;
 
 namespace proyectoPA.Controllers
 {
     public class ReservaController : Controller
     {
-        private ReservaModel reservaModel = new ReservaModel();
+        //// Acción para mostrar la página de reserva de película
+        //public ActionResult ReservarPelicula(int idPelicula)
+        //{
+        //    // Pasamos el ID de la película a la vista
+        //    ViewBag.PeliculaId = idPelicula;
 
-        // Acción para mostrar los detalles de la película y el formulario de reserva
-        public ActionResult ReservarPelicula(int idPelicula)
-        {
-            var pelicula = reservaModel.ObtenerDetallesPelicula(idPelicula);
-            var salas = reservaModel.ObtenerSalas();
+        //    // Lista de salas con sus precios
+        //    ViewBag.Salas = new List<SelectListItem>
+        //    {
+        //        new SelectListItem { Text = "Sala Normal", Value = "2500" },
+        //        new SelectListItem { Text = "Sala IMAX", Value = "5000" },
+        //        new SelectListItem { Text = "Sala VIP", Value = "7000" }
+        //    };
 
-            if (pelicula == null)
-            {
-                return HttpNotFound();
-            }
+        //    return View();
+        //}
 
-            ViewBag.Salas = new SelectList(salas, "IdSala", "Nombre");
+        //// Acción para manejar el post del formulario de reserva
+        //[HttpPost]
+        //public ActionResult ReservarPelicula(int cantidadEntradas, int salaSeleccionada)
+        //{
+        //    // Lógica simple para manejar la reserva (puedes expandirla según necesites)
+        //    decimal total = cantidadEntradas * salaSeleccionada;
 
-            return View(pelicula);
-        }
+        //    // Mostrar un mensaje de éxito
+        //    TempData["Mensaje"] = "Se ha comprado exitosamente. Total: " + total.ToString("C");
 
-        // Acción para manejar la reserva
-        [HttpPost]
-        public ActionResult ReservarPelicula(int idPelicula, int idSala, DateTime fecha, int cantidadEntradas)
-        {
-            // Lógica para guardar la reserva en la base de datos
-            reservaModel.RealizarReserva(idPelicula, idSala, fecha, cantidadEntradas);
+        //    // Redirigir a una vista de confirmación o a la página principal
+        //    return RedirectToAction("Confirmacion");
+        //}
 
-            // Redirigir a una vista de confirmación o a otra acción
-            return RedirectToAction("Index", "Home");
-        }
+        //// Acción para mostrar la confirmación de la reserva
+        //public ActionResult Confirmacion()
+        //{
+        //    ViewBag.Mensaje = TempData["Mensaje"];
+        //    return View();
+        //}
     }
 }

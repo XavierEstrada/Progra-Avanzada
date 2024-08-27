@@ -209,10 +209,11 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="sp_Reserva" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="IdPelicula" Type="int" Mode="In" />
-          <Parameter Name="Fecha" Type="date" Mode="In" />
-          <Parameter Name="Sala" Type="int" Mode="In" />
-          <Parameter Name="CantidadBoletos" Type="int" Mode="In" />
+          <Parameter Name="id_pelicula" Type="int" Mode="In" />
+          <Parameter Name="fecha_reserva" Type="date" Mode="In" />
+          <Parameter Name="id_sala" Type="int" Mode="In" />
+          <Parameter Name="cantidad_entradas" Type="int" Mode="In" />
+          <Parameter Name="id_usuario" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="CINE_DBModelStoreContainer">
           <EntitySet Name="tCompra" EntityType="Self.tCompra" Schema="dbo" store:Type="Tables" />
@@ -500,13 +501,21 @@
             <End Role="tGenero" EntitySet="tGenero" />
             <End Role="tPelicula" EntitySet="tPelicula" />
           </AssociationSet>
-          <FunctionImport Name="sp_Reserva">
-            <Parameter Name="IdPelicula" Mode="In" Type="Int32" />
-            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
-            <Parameter Name="Sala" Mode="In" Type="Int32" />
-            <Parameter Name="CantidadBoletos" Mode="In" Type="Int32" />
+          <FunctionImport Name="sp_Reserva" ReturnType="Collection(CINE_DBModel.sp_Reserva_Result)">
+            <Parameter Name="id_pelicula" Mode="In" Type="Int32" />
+            <Parameter Name="fecha_reserva" Mode="In" Type="DateTime" />
+            <Parameter Name="id_sala" Mode="In" Type="Int32" />
+            <Parameter Name="cantidad_entradas" Mode="In" Type="Int32" />
+            <Parameter Name="id_usuario" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="sp_Reserva_Result">
+          <Property Type="String" Name="titulo" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="duracion" Nullable="false" />
+          <Property Type="String" Name="director" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="clasificacion" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="poster_url" Nullable="true" MaxLength="255" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -617,7 +626,17 @@
               <ScalarProperty Name="id_pelicula" ColumnName="id_pelicula" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="sp_Reserva" FunctionName="CINE_DBModel.Store.sp_Reserva" />
+          <FunctionImportMapping FunctionImportName="sp_Reserva" FunctionName="CINE_DBModel.Store.sp_Reserva">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CINE_DBModel.sp_Reserva_Result">
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="duracion" ColumnName="duracion" />
+                <ScalarProperty Name="director" ColumnName="director" />
+                <ScalarProperty Name="clasificacion" ColumnName="clasificacion" />
+                <ScalarProperty Name="poster_url" ColumnName="poster_url" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

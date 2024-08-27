@@ -13,13 +13,36 @@
         <div class="row">
             @foreach (var pelicula in Model)
             {
-                <div class="col-md-3">
+                <div class="col-md-3 mb-4">
                     <div class="card">
                         <img class="card-img-top" src="@pelicula.Poster_Url" alt="">
                         <div class="card-body">
                             <h1 class="h5 card-title mb-2">@pelicula.Titulo</h1>
                             <p class="card-text">@pelicula.Sinopsis</p>
-                            <a href="@Url.Action("ReservarPelicula", "Reserva", new { idPelicula = pelicula.IdPelicula })" class="btn btn-primary">Reservar Entrada</a>
+                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#formulario-@pelicula.IdPelicula" aria-expanded="false" aria-controls="formulario-@pelicula.IdPelicula">
+                                Reservar Entrada
+                            </button>
+                            <div class="collapse mt-3" id="formulario-@pelicula.IdPelicula">
+                                <div class="card card-body">
+                                    <div class="mb-3">
+                                        <label for="cantidad-@pelicula.IdPelicula" class="form-label">Cantidad de entradas:</label>
+                                        <input type="number" class="form-control cantidad" id="cantidad-@pelicula.IdPelicula" value="1" min="1" data-precio="3000" onchange="actualizarPrecio(@pelicula.IdPelicula)">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="sala-@pelicula.IdPelicula" class="form-label">Seleccionar Sala:</label>
+                                        <select class="form-select sala" id="sala-@pelicula.IdPelicula" onchange="actualizarPrecio(@pelicula.IdPelicula)">
+                                            <option value="3000">Normal ₡3000</option>
+                                            <option value="5000">IMAX ₡5000</option>
+                                            <option value="8000">VIP ₡8000</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Precio total:</label>
+                                        <p id="precio-@pelicula.IdPelicula">₡3000</p>
+                                    </div>
+                                    <button class="btn btn-success" onclick="compraExitosa()">Comprar</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -27,4 +50,16 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function actualizarPrecio(idPelicula) {
+            var cantidad = document.getElementById('cantidad-' + idPelicula).value;
+            var sala = document.getElementById('sala-' + idPelicula).value;
+            var precioTotal = cantidad * sala;
+            document.getElementById('precio-' + idPelicula).innerText = '₡' + precioTotal;
+        }
+
+        function compraExitosa() {
+            alert('¡Compra Exitosa!');
+        }
+    </script>
 </body>
