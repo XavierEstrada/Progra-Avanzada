@@ -54,30 +54,14 @@ namespace proyectoPA.Controllers
             // Si no es una solicitud Ajax, vuelve a mostrar el formulario con los errores
             return View(movie);
         }
+
+        // Acción para eliminar una pelicula
         [HttpPost]
         public JsonResult EliminarPelicula(int id)
         {
-            try
-            {
-                bool resultado = peliculaM.EliminarPelicula(id);
-                if (resultado)
-                {
-                    return Json(new { success = true });
-                }
-                else
-                {
-                    return Json(new { success = false, message = "No se pudo eliminar la película. Puede que no exista." });
-                }
-            }
-            catch (Exception ex)
-            {
-                // Opcionalmente, registrar el error
-                System.Diagnostics.Debug.WriteLine("Error en EliminarPelicula: " + ex.Message);
-                return Json(new { success = false, message = "Ocurrió un error al procesar la solicitud." });
-            }
+            bool exito = peliculaM.EliminarPelicula(id);
+            return Json(new { success = exito });
         }
-
-
 
         public ActionResult ConsultaPelicula() {
 

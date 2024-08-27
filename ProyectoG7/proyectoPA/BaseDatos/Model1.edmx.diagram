@@ -4,21 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f0e3a44a18e7470e9d2bf2aee42e7c2b" Name="Diagram1">
-        <EntityTypeShape EntityType="CINE_DBModel.tCompra" Width="1.5" PointX="7.5" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CINE_DBModel.tErrorLog" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CINE_DBModel.tFuncion" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CINE_DBModel.tGenero" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CINE_DBModel.tPelicula" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CINE_DBModel.tReserva" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CINE_DBModel.tRoles" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CINE_DBModel.tSala" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CINE_DBModel.tUsuario" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+      <Diagram DiagramId="a1dd20ea0907411b90a75ab3cbdbef99" Name="Diagram1">
+        <EntityTypeShape EntityType="CINE_DBModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tCompra" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tErrorLog" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tFuncion" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tGenero" Width="1.5" PointX="1.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tPelicula" Width="1.5" PointX="3.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tReserva" Width="1.5" PointX="8.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tRoles" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tSala" Width="1.5" PointX="3.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CINE_DBModel.tUsuario" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="CINE_DBModel.FK__Compra__id_reser__48CFD27E" ManuallyRouted="false" />
         <AssociationConnector Association="CINE_DBModel.FK__Compra__id_usuar__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="CINE_DBModel.FK__tFuncion__id_pel__4E88ABD4" ManuallyRouted="false" />
-        <AssociationConnector Association="CINE_DBModel.FK__tFuncion__id_sal__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="CINE_DBModel.FK__tReserva__id_fun__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="CINE_DBModel.FK__Funcion__id_peli__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="CINE_DBModel.FK__Funcion__id_sala__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="CINE_DBModel.FK__Reserva__id_func__440B1D61" ManuallyRouted="false" />
         <AssociationConnector Association="CINE_DBModel.FK__Reserva__id_usua__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="CINE_DBModel.FK_tUsuario_tRoles" ManuallyRouted="false" />
         <AssociationConnector Association="CINE_DBModel.tPelicula_Genero" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

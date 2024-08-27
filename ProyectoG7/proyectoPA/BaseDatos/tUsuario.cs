@@ -32,5 +32,6 @@ namespace proyectoPA.BaseDatos
         public virtual ICollection<tCompra> tCompra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tReserva> tReserva { get; set; }
+        public virtual tRoles tRoles { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using proyectoPA.BaseDatos;
 using proyectoPA.Entidades;
+using proyectoPA.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,7 +21,7 @@ namespace proyectoPA.Models
             tablaU.contrasenna = user.Contrasenna;
             tablaU.idRol = 2;
 
-            using (var context = new CINE_DBEntities1())
+            using (var context = new CINE_DBEntities())
             {
                 context.tUsuario.Add(tablaU);
                 rowsAffected = context.SaveChanges();
@@ -35,7 +36,7 @@ namespace proyectoPA.Models
 
         public Usuario ValidarUsuario(string email, string contrasenna)
         {
-            using (var context = new CINE_DBEntities1())
+            using (var context = new CINE_DBEntities())
             {
                 var usuario = context.tUsuario
                     .FirstOrDefault(u => u.email == email && u.contrasenna == contrasenna);
@@ -57,16 +58,41 @@ namespace proyectoPA.Models
         }
 
 
-        public List<tUsuario> ConsultarUsuarios()
+        public List<UsuarioViewModel> ConsultarUsuarios()
         {
-            using (var context = new CINE_DBEntities1())
+            using (var context = new CINE_DBEntities())
             {
+                var usuarios = from u in context.tUsuario
+                               join r in context.tRoles on u.idRol equals r.idRol
+                               select new UsuarioViewModel
+                               {
+                                   IdUsuario = u.id_usuario,
+                                   Nombre = u.nombre,
+                                   Identificacion = u.identificacion,
+                                   Email = u.email,
+                                   NombreRol = r.rolNombre 
+                               };
 
-                return (from x in context.tUsuario
-                        select x).ToList();
+                return usuarios.ToList();
             }
+        }
 
-
+        public bool EliminarUsuario(int id)
+        {
+            using (var context = new CINE_DBEntities())
+            {
+                var usuario = context.tUsuario.Find(id);
+                if (usuario != null)
+                {
+                    context.tUsuario.Remove(usuario);
+                    var rowsAffected = context.SaveChanges();
+                    return rowsAffected > 0;
+                }
+                return false;
+            }
         }
     }
+
+
 }
+

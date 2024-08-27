@@ -24,7 +24,7 @@ namespace proyectoPA.Models
                 poster_url = movie.Poster_Url
             };
 
-            using (var context = new CINE_DBEntities1())
+            using (var context = new CINE_DBEntities())
             {
                 context.tPelicula.Add(tablaP);
                 rowsAffected = context.SaveChanges();
@@ -36,7 +36,7 @@ namespace proyectoPA.Models
         // Método para consultar todas las películas
         public List<tPelicula> ConsultarPeli()
         {
-            using (var context = new CINE_DBEntities1())
+            using (var context = new CINE_DBEntities())
             {
                 return context.tPelicula.ToList();
             }
@@ -45,25 +45,15 @@ namespace proyectoPA.Models
         // Método para eliminar una película por ID
         public bool EliminarPelicula(int id)
         {
-            try
+            using (var context = new CINE_DBEntities())
             {
-                using (var context = new CINE_DBEntities1())
+                var pelicula = context.tPelicula.Find(id);
+                if (pelicula != null)
                 {
-                    // Encuentra la película por su ID en la tabla tPelicula
-                    var pelicula = context.tPelicula.Find(id);
-                    if (pelicula != null)
-                    {
-                        context.tPelicula.Remove(pelicula);
-                        context.SaveChanges();
-                        return true;
-                    }
-                    return false;
+                    context.tPelicula.Remove(pelicula);
+                    var rowsAffected = context.SaveChanges();
+                    return rowsAffected > 0;
                 }
-            }
-            catch (Exception ex)
-            {
-                // Manejo de errores (opcionalmente puedes loguear el error)
-                System.Diagnostics.Debug.WriteLine("Error en EliminarPelicula: " + ex.ToString());
                 return false;
             }
         }

@@ -10,18 +10,10 @@
 namespace proyectoPA.BaseDatos
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tCompra
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int id_compra { get; set; }
-        public int id_usuario { get; set; }
-        public int id_reserva { get; set; }
-        public System.DateTime fecha_compra { get; set; }
-        public string metodo_pago { get; set; }
-        public decimal total { get; set; }
-    
-        public virtual tReserva tReserva { get; set; }
-        public virtual tUsuario tUsuario { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

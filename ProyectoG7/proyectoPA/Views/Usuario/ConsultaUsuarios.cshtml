@@ -1,8 +1,75 @@
-﻿
+﻿@model List<proyectoPA.ViewModels.UsuarioViewModel>
+
 @{
-    ViewBag.Title = "ConsultaUsuarios";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "ConsultaUsuario";
 }
 
-<h2>ConsultaUsuarios</h2>
+<br>
+<h4>Lista de Usuarios</h4>
+@Html.ActionLink("Agregar Usuarios", "Registro", "Home", null, new { @class = "btn btn-success", style = "margin-bottom: 20px;" })
+<hr>
 
+<br>
+
+<table id="tablaUsuarios" class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Identificación</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Identificacion</td>
+                <td>@item.Email</td>
+                <td>@item.NombreRol</td>
+                <td>
+                    <button class="btn btn-danger btn-eliminar" data-id="@item.IdUsuario">Eliminar</button>
+                </td>
+                <td>
+                    <button class="btn btn-primary">Actualizar</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.btn-eliminar').on('click', function () {
+                var button = $(this);
+                var id = button.data('id');
+
+                // Mostrar cuadro de confirmación
+                var confirmDelete = confirm('¿Estás seguro de que deseas eliminar el usuario seleecionado?');
+                if (confirmDelete) {
+                    $.ajax({
+                        url: '@Url.Action("EliminarUsuario", "Usuario")',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (response) {
+                            if (response.success) {
+                                button.closest('tr').remove();
+                            } else {
+                                alert('No se pudo eliminar el usuario.');
+                            }
+                        },
+                        error: function () {
+                            alert('Error en la solicitud.');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
