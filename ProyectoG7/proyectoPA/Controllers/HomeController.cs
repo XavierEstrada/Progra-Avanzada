@@ -45,7 +45,9 @@ namespace proyectoPA.Controllers
                     {
                         Session["Usuario"] = user.Nombre;
                         Session["UsuarioIdRol"] = user.IdRol;
-                        return RedirectToAction("Index", "Home");
+						Session["UsuarioEmail"] = user.Email;
+						Session["UsuarioId"] = user.Identificacion;
+						return RedirectToAction("Index", "Home");
                     }
                     else
                     {
@@ -122,10 +124,7 @@ namespace proyectoPA.Controllers
             }
         }
     
-		public ActionResult Perfil()
-		{
-			return View();
-		}
+		
 
 	}
 }

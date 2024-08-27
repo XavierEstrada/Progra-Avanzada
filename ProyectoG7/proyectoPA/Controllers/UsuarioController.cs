@@ -27,5 +27,11 @@ namespace proyectoPA.Controllers
             bool exito = usuarioC.EliminarUsuario(id);
             return Json(new { success = exito });
         }
-    }
+
+		public ActionResult Perfil()
+		{
+			return View();
+		}
+
+	}
 }
