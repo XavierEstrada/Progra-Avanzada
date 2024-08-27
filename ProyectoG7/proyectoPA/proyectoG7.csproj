@@ -133,15 +133,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="BaseDatos\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BaseDatos\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BaseDatos\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="BaseDatos\tCompra.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -215,7 +206,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="root\css\ConsultaUsuario.css" />
     <Content Include="root\css\elementos.css" />
+    <Content Include="root\css\FormRegistroPelicula.css" />
+    <Content Include="root\css\index.css" />
     <Content Include="root\css\style.css" />
     <Content Include="root\css\StyleSheet.css" />
     <Content Include="root\img\1page-img2.jpg" />
@@ -224,9 +218,14 @@
     <Content Include="root\img\banner-img.png" />
     <Content Include="root\img\border-left.gif" />
     <Content Include="root\img\border-right.gif" />
+    <Content Include="root\img\Deadpool 3.jpg" />
+    <Content Include="root\img\Dune 2.jpg" />
+    <Content Include="root\img\El reino del planeta de los simios.jpg" />
     <Content Include="root\img\footer-left.gif" />
     <Content Include="root\img\footer-right.gif" />
     <Content Include="root\img\footer-tail.gif" />
+    <Content Include="root\img\Furiosa De la saga Mad Max.jpg" />
+    <Content Include="root\img\Godzilla y Kong El nuevo imperio.jpg" />
     <Content Include="root\img\icon1-act.gif" />
     <Content Include="root\img\icon1.gif" />
     <Content Include="root\img\icon2-act.gif" />
@@ -234,6 +233,7 @@
     <Content Include="root\img\icon3-act.gif" />
     <Content Include="root\img\icon3.gif" />
     <Content Include="root\img\increibles.jpg" />
+    <Content Include="root\img\Inside Out 2.jpg" />
     <Content Include="root\img\line-hor.gif" />
     <Content Include="root\img\link1-left.png" />
     <Content Include="root\img\link1-right.png" />

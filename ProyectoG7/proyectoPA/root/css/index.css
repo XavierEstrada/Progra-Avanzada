@@ -1,0 +1,42 @@
+﻿.content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.movies {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.movie-item {
+    width: 30%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.movie-img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.movie-item h4 {
+    margin: 10px 0;
+}
+
+.movie-item p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.wrapper {
+    margin-top: auto;
+}
