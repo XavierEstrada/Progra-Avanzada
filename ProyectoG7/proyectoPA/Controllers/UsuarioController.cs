@@ -62,6 +62,10 @@ namespace proyectoPA.Controllers
 
 
 
+		public ActionResult Perfil()
+		{
+			return View();
+		}
 
 
 
@@ -71,10 +75,5 @@ namespace proyectoPA.Controllers
 
 
 
-		public ActionResult Perfil()
-		{
-			return View();
-		}
 
 	}
-}
