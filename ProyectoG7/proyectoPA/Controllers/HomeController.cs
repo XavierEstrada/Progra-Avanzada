@@ -47,11 +47,13 @@ namespace proyectoPA.Controllers
                         Session["UsuarioIdRol"] = user.IdRol;
 						Session["UsuarioEmail"] = user.Email;
 						Session["UsuarioId"] = user.Identificacion;
+                        Session["UsuarioID2"] = user.Id_usuario;
 						return RedirectToAction("Index", "Home");
                     }
                     else
                     {
-                        ViewBag.Mensaje = "Correo electrónico o contraseña incorrectos.";
+                        ViewData["Mensaje"] = "Correo electrónico o contraseña incorrectos.";
+
                     }
                 }
                 catch (Exception ex)

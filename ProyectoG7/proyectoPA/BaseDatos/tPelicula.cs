@@ -18,7 +18,7 @@ namespace proyectoPA.BaseDatos
         public tPelicula()
         {
             this.tFuncion = new HashSet<tFuncion>();
-            this.tGenero = new HashSet<tGenero>();
+            this.tPelicula_Genero = new HashSet<tPelicula_Genero>();
         }
     
         public int id_pelicula { get; set; }
@@ -33,6 +33,6 @@ namespace proyectoPA.BaseDatos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tFuncion> tFuncion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tGenero> tGenero { get; set; }
+        public virtual ICollection<tPelicula_Genero> tPelicula_Genero { get; set; }
     }
 }

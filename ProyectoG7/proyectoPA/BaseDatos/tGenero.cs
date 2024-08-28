@@ -14,16 +14,7 @@ namespace proyectoPA.BaseDatos
     
     public partial class tGenero
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tGenero()
-        {
-            this.tPelicula = new HashSet<tPelicula>();
-        }
-    
         public int id_genero { get; set; }
         public string nombre { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tPelicula> tPelicula { get; set; }
     }
 }

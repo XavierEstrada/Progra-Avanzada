@@ -10,13 +10,14 @@
 namespace proyectoPA.BaseDatos
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_Reserva_Result
+    public partial class sysdiagrams
     {
-        public string titulo { get; set; }
-        public int duracion { get; set; }
-        public string director { get; set; }
-        public string clasificacion { get; set; }
-        public string poster_url { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

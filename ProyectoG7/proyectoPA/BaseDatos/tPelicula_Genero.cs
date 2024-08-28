@@ -12,16 +12,11 @@ namespace proyectoPA.BaseDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class tCompra
+    public partial class tPelicula_Genero
     {
-        public int id_compra { get; set; }
-        public int id_usuario { get; set; }
-        public int id_reserva { get; set; }
-        public System.DateTime fecha_compra { get; set; }
-        public string metodo_pago { get; set; }
-        public decimal total { get; set; }
+        public int id_pelicula { get; set; }
+        public int id_genero { get; set; }
     
-        public virtual tReserva tReserva { get; set; }
-        public virtual tUsuario tUsuario { get; set; }
+        public virtual tPelicula tPelicula { get; set; }
     }
 }
