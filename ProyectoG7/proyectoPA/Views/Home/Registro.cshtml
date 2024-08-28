@@ -13,27 +13,23 @@
                 {
                     <p class="title display-4">Registro</p>
                     <label>
-
                         <span>Nombre Completo:</span>
-                        @Html.TextBoxFor(m => m.Nombre, new { @class = "input", required = "required" })
+                        @Html.TextBoxFor(m => m.Nombre, new { @class = "input", required = "required", placeholder = "Ingrese su nombre completo" })
                     </label>
                     <label>
                         <span>Identificación:</span>
-                        @Html.TextBoxFor(m => m.Identificacion, new { @class = "input", required = "required" })
-
+                        @Html.TextBoxFor(m => m.Identificacion, new { @class = "input", required = "required", placeholder = "Ingrese su identificación" })
                     </label>
                     <label>
                         <span>Correo Electrónico:</span>
-                        @Html.TextBoxFor(m => m.Email, new { @class = "input", type = "email", required = "required" })
-
+                        @Html.TextBoxFor(m => m.Email, new { @class = "input", type = "email", required = "required", placeholder = "Ingrese su correo electrónico" })
                     </label>
                     <label>
-                        <span>Contraseña</span>:
-                        @Html.PasswordFor(m => m.Contrasenna, new { @class = "input", required = "required" })
-
+                        <span>Contraseña:</span>
+                        @Html.PasswordFor(m => m.Contrasenna, new { @class = "input", required = "required", placeholder = "Ingrese una contraseña" })
                     </label>
                     <button class="submit" type="submit">Registrar</button>
-                    <p class="signin">¿Ya tienes una cuenta? <a href="@Url.Action("InicioSesion","Home")">Iniciar Sesión</a> </p>
+                    <p class="signin">¿Ya tienes una cuenta? <a href="@Url.Action("InicioSesion", "Home")">Iniciar Sesión</a> </p>
                 }
             </div>
         </div>

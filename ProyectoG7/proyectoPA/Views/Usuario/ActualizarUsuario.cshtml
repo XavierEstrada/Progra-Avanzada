@@ -29,7 +29,7 @@
                     </label>
                     <label>
                         <span>Rol</span>:
-                        @Html.PasswordFor(m => m.Contrasenna, new { @class = "input", required = "required" })
+                        @Html.TextBoxFor(m => m.IdRol, new { @class = "input", required = "required" ,placeholder ="Digite 1 para Administrador - 2 para Cliente"})
 
                     </label>
                     <button class="submit" type="submit">Actualizar</button>
